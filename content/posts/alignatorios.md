@@ -13,6 +13,9 @@ cover:
 
 Um formato simples para alinhar decisões, expectativas e dependências entre squads.
 
+
+
+
 ### O que você vai ver aqui
 
 - Roteiro de reunião curta
