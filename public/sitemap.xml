@@ -11,7 +11,19 @@
     <loc>http://localhost:1313/blog/tags/git/</loc>
     <lastmod>2026-01-28T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/tags/gitops/</loc>
+    <lastmod>2026-01-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/blog/tags/hugo/</loc>
+    <lastmod>2026-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/kubernetes/</loc>
+    <lastmod>2026-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/labs/kind-argocd/</loc>
+    <lastmod>2026-01-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/labs/</loc>
     <lastmod>2026-01-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/posts/primeiro-post/</loc>
@@ -23,6 +35,10 @@
     <loc>http://localhost:1313/blog/tags/</loc>
     <lastmod>2026-01-28T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/arquitetura/</loc>
+  </url><url>
     <loc>http://localhost:1313/blog/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/blog/devops/</loc>
   </url>
 </urlset>
