@@ -40,7 +40,7 @@ languageCode = "pt-br"
   subtitle = "Cloud • Platform Engineering • DevOps • GitOps"
   imageUrl = "images/hero.png"
   imageTitle = "Cloud & Platform Engineering"
-  imageWidth = 120
+  imageWidth = 380
   imageHeight = 120
 
 
