@@ -1,0 +1,55 @@
+.custom-footer {
+  background: var(--home-sand, #fbfbf7);
+  padding: 2.5rem var(--gap);
+}
+
+.custom-footer__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 4rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-footer__brand,
+.custom-footer__nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-weight: 600;
+  color: var(--home-ink, #161616);
+}
+
+.custom-footer__brand span,
+.custom-footer__nav span {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--home-ink-soft, #3a3a3a);
+}
+
+.custom-footer a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--home-border, rgba(20, 20, 20, 0.12));
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.custom-footer a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+html[data-theme="dark"] .custom-footer {
+  background: #0f1115;
+}
+
+html[data-theme="dark"] .custom-footer a {
+  background: rgba(30, 34, 42, 0.9);
+}

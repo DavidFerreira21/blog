@@ -45,9 +45,6 @@
             <p class="feed-kicker">{{ $home.feedKicker | default "Novidades" }}</p>
             <h2 class="feed-title">{{ $home.feedTitle | default "Últimos artigos e labs" }}</h2>
         </div>
-        {{- if and $home.feedLinkLabel $home.feedLinkUrl }}
-        <a class="feed-link" href="{{ $home.feedLinkUrl | relURL }}">{{ $home.feedLinkLabel }}</a>
-        {{- end }}
     </div>
 
     {{- with site.Taxonomies.categories }}
