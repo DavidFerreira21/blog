@@ -40,8 +40,8 @@ languageCode = "pt-br"
   subtitle = "Cloud • Platform Engineering • DevOps • GitOps"
   imageUrl = "images/hero.png"
   imageTitle = "Cloud & Platform Engineering"
-  imageWidth = 380
-  imageHeight = 120
+  imageWidth = 320  
+  imageHeight = 180
 
 
   [[params.profileMode.buttons]]
