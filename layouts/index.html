@@ -25,11 +25,6 @@
             </div>
 
             {{- with site.Menus.main }}
-            <div class="hero-chips">
-                {{- range . }}
-                <a class="chip" href="{{ .URL | relURL }}">{{ .Name }}</a>
-                {{- end }}
-            </div>
             {{- end }}
         </div>
 

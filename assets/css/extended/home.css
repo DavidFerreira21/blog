@@ -497,10 +497,10 @@ header.header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(251, 251, 247, 0.9);
+  background: transparent;
   backdrop-filter: blur(12px);
 }
 
 html[data-theme="dark"] header.header {
-  background: rgba(15, 17, 21, 0.9);
+  background: transparent;
 }
