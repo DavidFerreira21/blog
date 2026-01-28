@@ -38,7 +38,7 @@ languageCode = "pt-br"
   enabled = true
   title = "David Ferreira"
   subtitle = "Cloud • Platform Engineering • DevOps • GitOps"
-  imageUrl = "/images/hero.png"
+  imageUrl = "images/hero.png"
   imageTitle = "Cloud & Platform Engineering"
   imageWidth = 120
   imageHeight = 120
@@ -46,8 +46,8 @@ languageCode = "pt-br"
 
   [[params.profileMode.buttons]]
     name = "Labs"
-    url = "/labs/"
+    url = "labs/"
 
   [[params.profileMode.buttons]]
     name = "Arquitetura"
-    url = "/arquitetura/"
+    url = "arquitetura/"
