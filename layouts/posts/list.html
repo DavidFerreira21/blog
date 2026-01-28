@@ -16,6 +16,20 @@
 </section>
 
 <section class="home-feed">
+    {{- with site.Taxonomies.categories }}
+    <div class="category-select" data-filter="posts">
+        <details class="category-dropdown">
+            <summary>All categories</summary>
+            <div class="category-options">
+                <button class="category-option is-active" type="button" data-filter="all">All categories</button>
+                {{- range $name, $taxonomy := . }}
+                <button class="category-option" type="button" data-filter="{{ $name | urlize }}">{{ $name }}</button>
+                {{- end }}
+            </div>
+        </details>
+    </div>
+    {{- end }}
+
     <div class="feed-grid">
         {{- range $pages }}
         <article class="home-card has-media" data-categories="{{ with .Params.categories }}{{ delimit (apply . "urlize" ".") " " }}{{ end }}">
@@ -56,5 +70,39 @@
         {{- end }}
     </div>
 </section>
+
+<script>
+(() => {
+    const dropdown = document.querySelector('.category-select[data-filter="posts"] .category-dropdown');
+    if (!dropdown) return;
+
+    const summary = dropdown.querySelector("summary");
+    const buttons = dropdown.querySelectorAll("[data-filter]");
+    const cards = document.querySelectorAll(".home-card");
+
+    const applyFilter = (value) => {
+        const label = value === "all" ? "All categories" : value.replace(/-/g, " ");
+        summary.textContent = label;
+        buttons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.filter === value));
+        cards.forEach((card) => {
+            const categories = (card.dataset.categories || "").split(" ").filter(Boolean);
+            const visible = value === "all" || categories.includes(value);
+            card.style.display = visible ? "" : "none";
+        });
+        dropdown.open = false;
+    };
+
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", () => applyFilter(btn.dataset.filter));
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get("cat");
+    if (initial) {
+        const match = Array.from(buttons).find((btn) => btn.dataset.filter === initial);
+        if (match) applyFilter(initial);
+    }
+})();
+</script>
 
 {{ end }}
