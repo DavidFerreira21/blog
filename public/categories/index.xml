@@ -2,10 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on David Ferreira — Cloud &amp; Platform Engineering</title>
-    <link>http://localhost:1313/blog/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on David Ferreira — Cloud &amp; Platform Engineering</description>
     <generator>Hugo -- 0.146.0</generator>
     <language>pt-br</language>
-    <atom:link href="http://localhost:1313/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Jan 2026 09:00:00 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Devops</title>
+      <link>http://localhost:1313/categories/devops/</link>
+      <pubDate>Wed, 28 Jan 2026 09:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/categories/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>K8s</title>
+      <link>http://localhost:1313/categories/k8s/</link>
+      <pubDate>Wed, 28 Jan 2026 09:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/categories/k8s/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Terraform</title>
+      <link>http://localhost:1313/categories/terraform/</link>
+      <pubDate>Wed, 28 Jan 2026 09:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/categories/terraform/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Arquitetura</title>
+      <link>http://localhost:1313/categories/arquitetura/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/arquitetura/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
