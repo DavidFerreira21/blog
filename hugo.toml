@@ -13,40 +13,40 @@ languageCode = "pt-br"
   subtitle = "Cloud • Platform Engineering • DevOps • GitOps"
   banner = "images/hero.png"
   primaryButtonLabel = "Ver posts"
-  primaryButtonUrl = "/posts/"
+  primaryButtonUrl = "posts/"
   secondaryButtonLabel = "Labs"
-  secondaryButtonUrl = "/labs/"
+  secondaryButtonUrl = "labs/"
   feedKicker = "Novidades"
   feedTitle = "Últimos artigos e labs"
   feedLinkLabel = "Ver todos"
-  feedLinkUrl = "/posts/"
+  feedLinkUrl = "posts/"
   feedButtonLabel = "Carregar mais"
-  feedButtonUrl = "/posts/"
+  feedButtonUrl = "posts/"
 
 [menu]
 
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
-    url = "/posts/"
+    url = "posts/"
     weight = 10
 
   [[menu.main]]
     identifier = "labs"
     name = "Labs"
-    url = "/labs/"
+    url = "labs/"
     weight = 20
 
   [[menu.main]]
     identifier = "arquitetura"
     name = "Arquitetura"
-    url = "/arquitetura/"
+    url = "arquitetura/"
     weight = 30
 
   [[menu.main]]
     identifier = "devops"
     name = "DevOps"
-    url = "/devops/"
+    url = "devops/"
     weight = 40
 
 

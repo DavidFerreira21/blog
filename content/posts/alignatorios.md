@@ -1,6 +1,6 @@
 ---
 title: "Alinhatórios: guia rápido para alinhar squads"
-date: 2026-01-28T20:00:00-03:00
+date: 2026-01-28T09:00:00-03:00
 description: "Um framework leve para alinhar times, metas e entregas sem ruído."
 categories: ["devops", "arquitetura", "k8s", "terraform"]
 tags: ["alinhamento", "processo", "gestao"]

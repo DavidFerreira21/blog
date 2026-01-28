@@ -55,7 +55,7 @@
         <details class="category-dropdown">
             <summary>All categories</summary>
             <div class="category-options">
-                <a class="category-option" href="{{ "/posts/" | relURL }}">All categories</a>
+                <a class="category-option" href="{{ "posts/" | relURL }}">All categories</a>
                 {{- range $name, $taxonomy := . }}
                 <a class="category-option" href="{{ $taxonomy.Page.RelPermalink }}">{{ $name }}</a>
                 {{- end }}
