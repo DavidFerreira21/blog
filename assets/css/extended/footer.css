@@ -22,6 +22,52 @@
   color: var(--home-ink, #161616);
 }
 
+.custom-footer__subscribe {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 260px;
+  color: var(--home-ink, #161616);
+  font-weight: 600;
+}
+
+.custom-footer__subscribe label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--home-ink-soft, #3a3a3a);
+}
+
+.custom-footer__subscribe-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.custom-footer__subscribe input {
+  flex: 1 1 200px;
+  border-radius: 999px;
+  border: 1px solid var(--home-border, rgba(20, 20, 20, 0.12));
+  padding: 0.5rem 0.9rem;
+  background: rgba(255, 255, 255, 0.85);
+  color: inherit;
+}
+
+.custom-footer__subscribe button {
+  border-radius: 999px;
+  border: 1px solid var(--home-border, rgba(20, 20, 20, 0.12));
+  padding: 0.5rem 1.2rem;
+  background: var(--home-ink, #161616);
+  color: var(--home-sand, #fbfbf7);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.custom-footer__subscribe button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
 .custom-footer__brand span,
 .custom-footer__nav span {
   text-transform: uppercase;
@@ -70,4 +116,13 @@ html[data-theme="dark"] .custom-footer {
 
 html[data-theme="dark"] .custom-footer a {
   background: rgba(30, 34, 42, 0.9);
+}
+
+html[data-theme="dark"] .custom-footer__subscribe input {
+  background: rgba(30, 34, 42, 0.9);
+}
+
+html[data-theme="dark"] .custom-footer__subscribe button {
+  background: #1c222b;
+  color: #f2f3f5;
 }

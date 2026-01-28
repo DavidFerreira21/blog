@@ -15,5 +15,12 @@
         <nav class="custom-footer__nav" aria-label="Sobre">
             <a class="custom-footer__link" href="{{ "sobre/" | relURL }}">Sobre mim</a>
         </nav>
+        <form class="custom-footer__subscribe" action="#" method="post">
+            <label for="subscribe-email">Receba atualizações</label>
+            <div class="custom-footer__subscribe-row">
+                <input id="subscribe-email" name="email" type="email" placeholder="Seu e-mail" required>
+                <button type="submit">Assinar</button>
+            </div>
+        </form>
     </div>
 </div>
