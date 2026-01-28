@@ -11,6 +11,17 @@
   --home-shadow: 0 30px 80px rgba(19, 19, 19, 0.15);
 }
 
+html[data-theme="dark"] {
+  --home-ink: #f2f3f5;
+  --home-ink-soft: #b6bcc6;
+  --home-accent: #3dd68c;
+  --home-accent-strong: #3dd68c;
+  --home-sand: #0f1115;
+  --home-rose: #191c22;
+  --home-border: rgba(240, 242, 245, 0.12);
+  --home-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
 .home-hero {
   background: var(--home-sand);
   padding: 5.5rem var(--gap) 3.5rem;
@@ -115,6 +126,11 @@
 .hero-btn.ghost {
   border: 1px solid var(--home-ink);
   color: var(--home-ink);
+  background: transparent;
+}
+
+.hero-btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .hero-chips {
@@ -137,6 +153,10 @@
 .chip:hover {
   background: #fff;
   transform: translateY(-1px);
+}
+
+html[data-theme="dark"] .chip {
+  background: rgba(30, 34, 42, 0.9);
 }
 
 .hero-media {
@@ -282,6 +302,15 @@
   background: rgba(15, 157, 88, 0.08);
 }
 
+html[data-theme="dark"] .category-dropdown summary,
+html[data-theme="dark"] .category-options {
+  background: #141820;
+}
+
+html[data-theme="dark"] .category-option:hover {
+  background: rgba(61, 214, 140, 0.16);
+}
+
 .feed-footer {
   margin: 3rem auto 0;
   display: flex;
@@ -298,6 +327,10 @@
   position: relative;
 }
 
+html[data-theme="dark"] .home-card {
+  background: rgba(20, 24, 32, 0.92);
+}
+
 .home-card.has-media .card-link {
   padding: 0;
 }
@@ -307,6 +340,10 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #f1f1f1;
+}
+
+html[data-theme="dark"] .card-media {
+  background: #0f1115;
 }
 
 .card-media img {

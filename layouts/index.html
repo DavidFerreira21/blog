@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{- $home := site.Params.home | default dict -}}
 {{- $banner := $home.banner | default "images/hero.png" -}}
-{{- $pages := where site.RegularPages "Type" "in" (slice "posts" "labs" "arquitetura" "devops") -}}
+{{- $pages := where site.RegularPages "Type" "in" (slice "posts" "labs") -}}
 {{- $pages = $pages.ByDate.Reverse -}}
 
 <section class="home-hero">

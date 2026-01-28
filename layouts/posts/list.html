@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{- $sections := slice "posts" "labs" "arquitetura" "devops" -}}
+{{- $sections := slice "posts" "labs" -}}
 {{- $pages := where site.RegularPages "Type" "in" $sections -}}
 {{- $pages = $pages.ByDate.Reverse -}}
 
