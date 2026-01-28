@@ -6,3 +6,29 @@ languageCode = "pt-br"
 [params]
   ShowReadingTime = true
   ShowCodeCopyButtons = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "labs"
+    name = "Labs"
+    url = "/labs/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "arquitetura"
+    name = "Arquitetura"
+    url = "/arquitetura/"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "devops"
+    name = "DevOps"
+    url = "/devops/"
+    weight = 40
