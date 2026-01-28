@@ -1,0 +1,59 @@
+{{ define "main" }}
+{{- $sections := slice "posts" "labs" "arquitetura" "devops" -}}
+{{- $pages := where site.RegularPages "Type" "in" $sections -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+
+<section class="home-hero">
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <p class="hero-kicker">Posts</p>
+            <h1 class="hero-title">{{ .Title }}</h1>
+            {{- with .Params.description }}
+            <p class="hero-subtitle">{{ . }}</p>
+            {{- end }}
+        </div>
+    </div>
+</section>
+
+<section class="home-feed">
+    {{- with site.Taxonomies.categories }}
+    <div class="category-select">
+        <details class="category-dropdown">
+            <summary>All categories</summary>
+            <div class="category-options">
+                <a class="category-option" href="{{ "/posts/" | relURL }}">All categories</a>
+                {{- range $name, $taxonomy := . }}
+                <a class="category-option" href="{{ $taxonomy.Page.RelPermalink }}">{{ $name }}</a>
+                {{- end }}
+            </div>
+        </details>
+    </div>
+    {{- end }}
+
+    <div class="feed-grid">
+        {{- range $pages }}
+        <article class="home-card">
+            <a class="card-link" href="{{ .RelPermalink }}">
+                <div class="card-meta">
+                    <span class="card-section">
+                        {{- with .CurrentSection }}{{ .Title }}{{- else }}{{ .Section | title }}{{- end }}
+                    </span>
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+                </div>
+                <h3 class="card-title">{{ .Title }}</h3>
+                {{- with .Summary }}
+                <p class="card-summary">{{ . | plainify | truncate 160 }}</p>
+                {{- end }}
+                {{- with .Params.tags }}
+                <div class="card-tags">
+                    {{- range first 3 . }}
+                    <span class="tag">#{{ . }}</span>
+                    {{- end }}
+                </div>
+                {{- end }}
+            </a>
+        </article>
+        {{- end }}
+    </div>
+</section>
+{{ end }}
