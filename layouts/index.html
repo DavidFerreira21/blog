@@ -21,8 +21,6 @@
             </div>
             {{- end }}
 
-            {{- with site.Menus.main }}
-            {{- end }}
         </div>
 
         <div class="hero-media">
@@ -68,7 +66,7 @@
                 {{- end -}}
                 {{- if $cover }}
                 <div class="card-media">
-                    <img src="{{ $cover | relURL }}" alt="{{ with .Params.cover }}{{ .alt | default $.Title }}{{ else }}{{ .Title }}{{ end }}">
+                    <img src="{{ $cover | relURL }}" alt="{{ with .Params.cover }}{{ .alt | default $.Title }}{{ else }}{{ .Title }}{{ end }}" loading="lazy" decoding="async">
                 </div>
                 {{- end }}
                 <div class="card-meta">
