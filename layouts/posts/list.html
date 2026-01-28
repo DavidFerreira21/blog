@@ -95,6 +95,13 @@
     buttons.forEach((btn) => {
         btn.addEventListener("click", () => applyFilter(btn.dataset.filter));
     });
+
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get("cat");
+    if (initial) {
+        const match = Array.from(buttons).find((btn) => btn.dataset.filter === initial);
+        if (match) applyFilter(initial);
+    }
 })();
 </script>
 {{ end }}

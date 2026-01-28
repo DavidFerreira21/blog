@@ -51,13 +51,13 @@
     </div>
 
     {{- with site.Taxonomies.categories }}
-    <div class="category-select" data-filter="home">
+    <div class="category-select">
         <details class="category-dropdown">
             <summary>All categories</summary>
             <div class="category-options">
-                <button class="category-option is-active" type="button" data-filter="all">All categories</button>
+                <a class="category-option" href="{{ "posts/" | relURL }}">All categories</a>
                 {{- range $name, $taxonomy := . }}
-                <button class="category-option" type="button" data-filter="{{ $name | urlize }}">{{ $name }}</button>
+                <a class="category-option" href="{{ printf "posts/?cat=%s" ($name | urlize) | relURL }}">{{ $name }}</a>
                 {{- end }}
             </div>
         </details>
@@ -66,7 +66,7 @@
 
     <div class="feed-grid">
         {{- range first 9 $pages }}
-        <article class="home-card has-media" data-categories="{{ with .Params.categories }}{{ delimit (apply . "urlize" ".") " " }}{{ end }}">
+        <article class="home-card has-media">
             <a class="card-link" href="{{ .RelPermalink }}">
                 {{- $cover := "" -}}
                 {{- with .Params.cover }}
@@ -110,31 +110,4 @@
     </div>
     {{- end }}
 </section>
-
-<script>
-(() => {
-    const dropdown = document.querySelector('.category-select[data-filter="home"] .category-dropdown');
-    if (!dropdown) return;
-
-    const summary = dropdown.querySelector("summary");
-    const buttons = dropdown.querySelectorAll("[data-filter]");
-    const cards = document.querySelectorAll(".home-card");
-
-    const applyFilter = (value) => {
-        const label = value === "all" ? "All categories" : value.replace(/-/g, " ");
-        summary.textContent = label;
-        buttons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.filter === value));
-        cards.forEach((card) => {
-            const categories = (card.dataset.categories || "").split(" ").filter(Boolean);
-            const visible = value === "all" || categories.includes(value);
-            card.style.display = visible ? "" : "none";
-        });
-        dropdown.open = false;
-    };
-
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", () => applyFilter(btn.dataset.filter));
-    });
-})();
-</script>
 {{ end }}
