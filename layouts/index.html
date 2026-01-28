@@ -15,14 +15,11 @@
             <p class="hero-subtitle">{{ . }}</p>
             {{- end }}
 
+            {{- if and $home.secondaryButtonLabel $home.secondaryButtonUrl }}
             <div class="hero-actions">
-                {{- if and $home.primaryButtonLabel $home.primaryButtonUrl }}
-                <a class="hero-btn primary" href="{{ $home.primaryButtonUrl | relURL }}">{{ $home.primaryButtonLabel }}</a>
-                {{- end }}
-                {{- if and $home.secondaryButtonLabel $home.secondaryButtonUrl }}
                 <a class="hero-btn ghost" href="{{ $home.secondaryButtonUrl | relURL }}">{{ $home.secondaryButtonLabel }}</a>
-                {{- end }}
             </div>
+            {{- end }}
 
             {{- with site.Menus.main }}
             {{- end }}
@@ -41,6 +38,20 @@
             <h2 class="feed-title">{{ $home.feedTitle | default "Últimos artigos e labs" }}</h2>
         </div>
     </div>
+
+    {{- with site.Taxonomies.categories }}
+    <div class="category-select">
+        <details class="category-dropdown">
+            <summary>All categories</summary>
+            <div class="category-options">
+                <a class="category-option" href="{{ "posts/" | relURL }}">All categories</a>
+                {{- range $name, $taxonomy := . }}
+                <a class="category-option" href="{{ printf "posts/?cat=%s" ($name | urlize) | relURL }}">{{ $name }}</a>
+                {{- end }}
+            </div>
+        </details>
+    </div>
+    {{- end }}
 
     <div class="feed-grid">
         {{- range first 9 $pages }}

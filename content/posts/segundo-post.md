@@ -3,7 +3,7 @@ title: "Meu primeiro post com Hugo"
 date: 2026-01-28
 tags: ["hugo", "blog", "git"]
 draft: false
-categories: ["devops", "arquitetura", "k8s", "terraform"]
+categories: ["devops", "arquitetura", "terraform"]
 cover:
   image: "images/primeiro-post-cover.svg"
   alt: "Arte abstrata para o primeiro post"
