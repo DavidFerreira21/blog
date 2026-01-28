@@ -301,10 +301,20 @@ html[data-theme="dark"] .chip {
   text-decoration: none;
   color: var(--home-ink);
   font-weight: 500;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 
 .category-option:hover {
   background: rgba(15, 157, 88, 0.08);
+}
+
+.category-option.is-active {
+  background: rgba(15, 157, 88, 0.14);
+  color: var(--home-accent-strong);
 }
 
 html[data-theme="dark"] .category-dropdown summary,
