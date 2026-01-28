@@ -114,8 +114,13 @@ html[data-theme="dark"] {
 
 .hero-btn.primary {
   background: var(--home-ink);
-  color: #fff;
+  color: var(--home-sand);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="dark"] .hero-btn.primary {
+  background: #1c222b;
+  color: #f2f3f5;
 }
 
 .hero-btn.primary:hover {
