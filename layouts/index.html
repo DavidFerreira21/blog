@@ -47,20 +47,6 @@
         </div>
     </div>
 
-    {{- with site.Taxonomies.categories }}
-    <div class="category-select">
-        <details class="category-dropdown">
-            <summary>All categories</summary>
-            <div class="category-options">
-                <a class="category-option" href="{{ "posts/" | relURL }}">All categories</a>
-                {{- range $name, $taxonomy := . }}
-                <a class="category-option" href="{{ printf "posts/?cat=%s" ($name | urlize) | relURL }}">{{ $name }}</a>
-                {{- end }}
-            </div>
-        </details>
-    </div>
-    {{- end }}
-
     <div class="feed-grid">
         {{- range first 9 $pages }}
         <article class="home-card has-media">
