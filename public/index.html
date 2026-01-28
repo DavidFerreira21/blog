@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/blog/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.132910f097b8e3da7fd6102150dfc70f056bfbf3037a98dec5426b8bc4db6a77.css" integrity="sha256-EykQ8Je449p/1hAhUN/HDwVr&#43;/MDepjexUJri8Tbanc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/blog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
@@ -126,28 +126,79 @@
         </ul>
     </nav>
 </header>
-<main class="main"><div class="profile">
-    <div class="profile_inner">
-        <img draggable="false" src="http://localhost:1313/images/hero.png" alt="Cloud &amp; Platform Engineering" title="Cloud &amp; Platform Engineering"
-            height="180" width="320" />
-        <h1>David Ferreira</h1>
-        <span>Cloud • Platform Engineering • DevOps • GitOps</span><div class="social-icons" >
-</div>
+<main class="main"><section class="home-hero">
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <p class="hero-kicker">Engineering</p>
+            <h1 class="hero-title">David Ferreira</h1>
+            <p class="hero-subtitle">Cloud • Platform Engineering • DevOps • GitOps</p>
 
-        <div class="buttons">
-            <a class="button" href="/labs/" rel="noopener" title="Labs">
-                <span class="button-inner">
-                    Labs
-                </span>
-            </a>
-            <a class="button" href="/arquitetura/" rel="noopener" title="Arquitetura">
-                <span class="button-inner">
-                    Arquitetura
-                </span>
-            </a>
+            <div class="hero-actions">
+                <a class="hero-btn primary" href="/posts/">Ver posts</a>
+                <a class="hero-btn ghost" href="/labs/">Labs</a>
+            </div>
+            <div class="hero-chips">
+                <a class="chip" href="/blog/posts/">Posts</a>
+                <a class="chip" href="/blog/labs/">Labs</a>
+                <a class="chip" href="/blog/arquitetura/">Arquitetura</a>
+                <a class="chip" href="/blog/devops/">DevOps</a>
+            </div>
+        </div>
+
+        <div class="hero-media">
+            <img src="http://localhost:1313/blog/images/hero.png" alt="David Ferreira">
         </div>
     </div>
-</div>
+</section>
+
+<section class="home-feed">
+    <div class="feed-header">
+        <div>
+            <p class="feed-kicker">Novidades</p>
+            <h2 class="feed-title">Últimos artigos e labs</h2>
+        </div>
+        <a class="feed-link" href="/posts/">Ver todos</a>
+    </div>
+
+    <div class="feed-grid">
+        <article class="home-card">
+            <a class="card-link" href="/blog/posts/primeiro-post/">
+                <div class="card-meta">
+                    <span class="card-section">Posts
+                    </span>
+                    <time datetime="2026-01-28">28 Jan 2026</time>
+                </div>
+                <h3 class="card-title">Meu primeiro post com Hugo</h3>
+                <p class="card-summary">Este blog nasce da necessidade de documentar labs, arquiteturas e aprendizados de forma pública e versionada.
+</p>
+                <div class="card-tags">
+                    <span class="tag">#hugo</span>
+                    <span class="tag">#blog</span>
+                    <span class="tag">#git</span>
+                </div>
+            </a>
+        </article>
+        <article class="home-card">
+            <a class="card-link" href="/blog/labs/kind-argocd/">
+                <div class="card-meta">
+                    <span class="card-section">Labs
+                    </span>
+                    <time datetime="2026-01-28">28 Jan 2026</time>
+                </div>
+                <h3 class="card-title">Lab: KIND &#43; ArgoCD</h3>
+                <p class="card-summary">Laboratório prático para subir um cluster KIND com ArgoCD.
+</p>
+                <div class="card-tags">
+                    <span class="tag">#kubernetes</span>
+                    <span class="tag">#gitops</span>
+                </div>
+            </a>
+        </article>
+    </div>
+    <div class="feed-footer">
+        <a class="hero-btn primary" href="/posts/">Carregar mais</a>
+    </div>
+</section>
 
     </main>
     

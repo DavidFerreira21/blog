@@ -1,0 +1,99 @@
+{{ define "main" }}
+{{- $home := site.Params.home | default dict -}}
+{{- $banner := $home.banner | default "images/hero.png" -}}
+{{- $pages := where site.RegularPages "Type" "in" (slice "posts" "labs" "arquitetura" "devops") -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+
+<section class="home-hero">
+    <div class="hero-inner">
+        <div class="hero-copy">
+            {{- with $home.kicker }}
+            <p class="hero-kicker">{{ . }}</p>
+            {{- end }}
+            <h1 class="hero-title">{{ $home.title | default site.Title }}</h1>
+            {{- with $home.subtitle }}
+            <p class="hero-subtitle">{{ . }}</p>
+            {{- end }}
+
+            <div class="hero-actions">
+                {{- if and $home.primaryButtonLabel $home.primaryButtonUrl }}
+                <a class="hero-btn primary" href="{{ $home.primaryButtonUrl | relURL }}">{{ $home.primaryButtonLabel }}</a>
+                {{- end }}
+                {{- if and $home.secondaryButtonLabel $home.secondaryButtonUrl }}
+                <a class="hero-btn ghost" href="{{ $home.secondaryButtonUrl | relURL }}">{{ $home.secondaryButtonLabel }}</a>
+                {{- end }}
+            </div>
+
+            {{- with site.Menus.main }}
+            <div class="hero-chips">
+                {{- range . }}
+                <a class="chip" href="{{ .URL | relURL }}">{{ .Name }}</a>
+                {{- end }}
+            </div>
+            {{- end }}
+        </div>
+
+        <div class="hero-media">
+            <img src="{{ $banner | absURL }}" alt="{{ $home.title | default site.Title }}">
+        </div>
+    </div>
+</section>
+
+<section class="home-feed">
+    <div class="feed-header">
+        <div>
+            <p class="feed-kicker">{{ $home.feedKicker | default "Novidades" }}</p>
+            <h2 class="feed-title">{{ $home.feedTitle | default "Últimos artigos e labs" }}</h2>
+        </div>
+        {{- if and $home.feedLinkLabel $home.feedLinkUrl }}
+        <a class="feed-link" href="{{ $home.feedLinkUrl | relURL }}">{{ $home.feedLinkLabel }}</a>
+        {{- end }}
+    </div>
+
+    {{- with site.Taxonomies.categories }}
+    <div class="category-select">
+        <details class="category-dropdown">
+            <summary>All categories</summary>
+            <div class="category-options">
+                <a class="category-option" href="{{ "/posts/" | relURL }}">All categories</a>
+                {{- range $name, $taxonomy := . }}
+                <a class="category-option" href="{{ $taxonomy.Page.RelPermalink }}">{{ $name }}</a>
+                {{- end }}
+            </div>
+        </details>
+    </div>
+    {{- end }}
+
+    <div class="feed-grid">
+        {{- range first 9 $pages }}
+        <article class="home-card">
+            <a class="card-link" href="{{ .RelPermalink }}">
+                <div class="card-meta">
+                    <span class="card-section">
+                        {{- with .CurrentSection }}{{ .Title }}{{- else }}{{ .Section | title }}{{- end }}
+                    </span>
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+                </div>
+                <h3 class="card-title">{{ .Title }}</h3>
+                {{- with .Summary }}
+                <p class="card-summary">{{ . | plainify | truncate 160 }}</p>
+                {{- end }}
+                {{- with .Params.tags }}
+                <div class="card-tags">
+                    {{- range first 3 . }}
+                    <span class="tag">#{{ . }}</span>
+                    {{- end }}
+                </div>
+                {{- end }}
+            </a>
+        </article>
+        {{- end }}
+    </div>
+
+    {{- if and $home.feedButtonLabel $home.feedButtonUrl }}
+    <div class="feed-footer">
+        <a class="hero-btn primary" href="{{ $home.feedButtonUrl | relURL }}">{{ $home.feedButtonLabel }}</a>
+    </div>
+    {{- end }}
+</section>
+{{ end }}

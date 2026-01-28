@@ -7,6 +7,22 @@ languageCode = "pt-br"
   ShowReadingTime = true
   ShowCodeCopyButtons = true
 
+[params.home]
+  kicker = "Engineering"
+  title = "David Ferreira"
+  subtitle = "Cloud • Platform Engineering • DevOps • GitOps"
+  banner = "images/hero.png"
+  primaryButtonLabel = "Ver posts"
+  primaryButtonUrl = "/posts/"
+  secondaryButtonLabel = "Labs"
+  secondaryButtonUrl = "/labs/"
+  feedKicker = "Novidades"
+  feedTitle = "Últimos artigos e labs"
+  feedLinkLabel = "Ver todos"
+  feedLinkUrl = "/posts/"
+  feedButtonLabel = "Carregar mais"
+  feedButtonUrl = "/posts/"
+
 [menu]
 
   [[menu.main]]
