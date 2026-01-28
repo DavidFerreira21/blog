@@ -1,4 +1,4 @@
-baseURL = "https://davidferreira21.github.io/"
+baseURL = "https://davidferreira21.github.io/blog/"
 title = "David Ferreira — Cloud & Platform Engineering"
 theme = "PaperMod"
 languageCode = "pt-br"
