@@ -14,10 +14,9 @@ languageCode = "pt-br"
   banner = "images/hero.png"
   primaryButtonLabel = "Ver posts"
   primaryButtonUrl = "posts/"
-  secondaryButtonLabel = "Labs"
-  secondaryButtonUrl = "labs/"
+  # secondaryButtonLabel/Url removidos enquanto Labs estiver oculto
   feedKicker = "Novidades"
-  feedTitle = "Últimos artigos e labs"
+  feedTitle = "Últimos artigos"
   feedLinkLabel = "Ver todos"
   feedLinkUrl = "posts/"
   feedButtonLabel = "Carregar mais"
@@ -31,11 +30,7 @@ languageCode = "pt-br"
     url = "posts/"
     weight = 10
 
-  [[menu.main]]
-    identifier = "labs"
-    name = "Labs"
-    url = "labs/"
-    weight = 20
+  # Labs removido do menu por enquanto
 
   # Arquitetura/DevOps removidos do menu por enquanto
 
