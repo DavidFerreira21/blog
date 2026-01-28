@@ -99,8 +99,9 @@
     const params = new URLSearchParams(window.location.search);
     const initial = params.get("cat");
     if (initial) {
-        const match = Array.from(buttons).find((btn) => btn.dataset.filter === initial);
-        if (match) applyFilter(initial);
+        const normalized = initial.replace(/\/+$/, "").toLowerCase();
+        const match = Array.from(buttons).find((btn) => btn.dataset.filter === normalized);
+        if (match) applyFilter(normalized);
     }
 })();
 </script>
