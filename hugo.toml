@@ -48,6 +48,12 @@ languageCode = "pt-br"
     url = "posts/?cat=devops"
     weight = 40
 
+  [[menu.main]]
+    identifier = "sobre"
+    name = "Sobre"
+    url = "sobre/"
+    weight = 50
+
   # Arquitetura/DevOps removidos do menu por enquanto
 
 
