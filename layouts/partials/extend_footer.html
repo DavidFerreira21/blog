@@ -1,8 +1,26 @@
 {{- /* Custom footer content */ -}}
 <div class="custom-footer">
     <div class="custom-footer__inner">
+        <div class="custom-footer__cta">
+            <p class="custom-footer__title">Quer receber atualizações?</p>
+            <p class="custom-footer__subtitle">Inscreva-se para não perder novos posts sobre cloud, arquitetura e devops.</p>
+        </div>
+        <form class="custom-footer__subscribe" action="#" method="post">
+            <label for="subscribe-email">Newsletter</label>
+            <div class="custom-footer__subscribe-row">
+                <input id="subscribe-email" name="email" type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Assinar</button>
+            </div>
+        </form>
+    </div>
+    <div class="custom-footer__divider"></div>
+    <div class="custom-footer__bottom">
         <div class="custom-footer__brand">
-            <span>Conecte-se</span>
+            <span class="custom-footer__name">{{ site.Title }}</span>
+            <span class="custom-footer__theme">Cloud • Platform Engineering • DevOps</span>
+        </div>
+        <div class="custom-footer__links">
+            <a class="custom-footer__link" href="{{ "sobre/" | relURL }}">Sobre mim</a>
             <a class="custom-footer__link" href="https://www.linkedin.com/in/davidferreirams/" rel="noopener" target="_blank">
                 <span class="custom-footer__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" role="img" aria-label="LinkedIn">
@@ -12,15 +30,5 @@
                 LinkedIn
             </a>
         </div>
-        <nav class="custom-footer__nav" aria-label="Sobre">
-            <a class="custom-footer__link" href="{{ "sobre/" | relURL }}">Sobre mim</a>
-        </nav>
-        <form class="custom-footer__subscribe" action="#" method="post">
-            <label for="subscribe-email">Receba atualizações</label>
-            <div class="custom-footer__subscribe-row">
-                <input id="subscribe-email" name="email" type="email" placeholder="Seu e-mail" required>
-                <button type="submit">Assinar</button>
-            </div>
-        </form>
     </div>
 </div>

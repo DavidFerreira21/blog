@@ -1,25 +1,33 @@
 .custom-footer {
-  background: var(--home-sand, #fbfbf7);
-  padding: 2.5rem var(--gap);
+  background: #0d0f13;
+  color: #f1f3f5;
+  padding: 3rem var(--gap) 2.2rem;
 }
 
 .custom-footer__inner {
   max-width: 1120px;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem 4rem;
+  display: grid;
+  grid-template-columns: minmax(240px, 1.2fr) minmax(240px, 1fr);
+  gap: 2rem 3rem;
   align-items: center;
-  justify-content: space-between;
 }
 
-.custom-footer__brand,
-.custom-footer__nav {
+.custom-footer__cta {
   display: flex;
-  gap: 1rem;
-  align-items: center;
-  font-weight: 600;
-  color: var(--home-ink, #161616);
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.custom-footer__title {
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.custom-footer__subtitle {
+  margin: 0;
+  color: rgba(241, 243, 245, 0.7);
 }
 
 .custom-footer__subscribe {
@@ -27,7 +35,6 @@
   flex-direction: column;
   gap: 0.6rem;
   min-width: 260px;
-  color: var(--home-ink, #161616);
   font-weight: 600;
 }
 
@@ -35,7 +42,7 @@
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.8rem;
-  color: var(--home-ink-soft, #3a3a3a);
+  color: rgba(241, 243, 245, 0.7);
 }
 
 .custom-footer__subscribe-row {
@@ -47,18 +54,18 @@
 .custom-footer__subscribe input {
   flex: 1 1 200px;
   border-radius: 999px;
-  border: 1px solid var(--home-border, rgba(20, 20, 20, 0.12));
+  border: 1px solid rgba(241, 243, 245, 0.2);
   padding: 0.5rem 0.9rem;
-  background: rgba(255, 255, 255, 0.85);
-  color: inherit;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f1f3f5;
 }
 
 .custom-footer__subscribe button {
   border-radius: 999px;
-  border: 1px solid var(--home-border, rgba(20, 20, 20, 0.12));
+  border: 1px solid rgba(241, 243, 245, 0.2);
   padding: 0.5rem 1.2rem;
-  background: var(--home-ink, #161616);
-  color: var(--home-sand, #fbfbf7);
+  background: #8b2e7a;
+  color: #fff;
   font-weight: 600;
   cursor: pointer;
 }
@@ -68,28 +75,56 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.custom-footer__brand span,
-.custom-footer__nav span {
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.8rem;
-  color: var(--home-ink-soft, #3a3a3a);
+.custom-footer__divider {
+  max-width: 1120px;
+  height: 1px;
+  background: rgba(241, 243, 245, 0.1);
+  margin: 2.2rem auto 1.6rem;
 }
 
-.custom-footer a {
-  color: inherit;
-  text-decoration: none;
-  padding: 0.3rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--home-border, rgba(20, 20, 20, 0.12));
-  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
-  background: rgba(255, 255, 255, 0.6);
+.custom-footer__bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: flex-start;
+}
+
+.custom-footer__name {
+  font-weight: 700;
+}
+
+.custom-footer__theme {
+  font-size: 0.9rem;
+  color: rgba(241, 243, 245, 0.7);
+}
+
+.custom-footer__links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .custom-footer__link {
+  color: rgba(241, 243, 245, 0.8);
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  font-weight: 600;
+}
+
+.custom-footer__link:hover {
+  color: #fff;
 }
 
 .custom-footer__icon {
@@ -104,25 +139,8 @@
   fill: currentColor;
 }
 
-.custom-footer a:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-  background: #fff;
-}
-
-html[data-theme="dark"] .custom-footer {
-  background: #0f1115;
-}
-
-html[data-theme="dark"] .custom-footer a {
-  background: rgba(30, 34, 42, 0.9);
-}
-
-html[data-theme="dark"] .custom-footer__subscribe input {
-  background: rgba(30, 34, 42, 0.9);
-}
-
-html[data-theme="dark"] .custom-footer__subscribe button {
-  background: #1c222b;
-  color: #f2f3f5;
+@media (max-width: 860px) {
+  .custom-footer__inner {
+    grid-template-columns: 1fr;
+  }
 }
