@@ -32,8 +32,22 @@
 
     <div class="feed-grid">
         {{- range $pages }}
-        <article class="home-card">
+        <article class="home-card has-media">
             <a class="card-link" href="{{ .RelPermalink }}">
+                {{- $cover := "" -}}
+                {{- with .Params.cover }}
+                {{- $cover = .image | default "" -}}
+                {{- end -}}
+                {{- if not $cover }}
+                {{- with .Params.image }}
+                {{- $cover = . -}}
+                {{- end -}}
+                {{- end -}}
+                {{- if $cover }}
+                <div class="card-media">
+                    <img src="{{ $cover | relURL }}" alt="{{ with .Params.cover }}{{ .alt | default $.Title }}{{ else }}{{ .Title }}{{ end }}">
+                </div>
+                {{- end }}
                 <div class="card-meta">
                     <span class="card-section">
                         {{- with .CurrentSection }}{{ .Title }}{{- else }}{{ .Section | title }}{{- end }}
