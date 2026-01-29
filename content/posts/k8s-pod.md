@@ -6,11 +6,10 @@ tags: ["k8s", "kubernetes", "pods", "fundamentos", "containers"]
 categories: ["k8s", "cloud"]
 draft: false
 cover:
-  image: "images/k8s-pods-cover.png"
+  image: "images/pod.png"
   alt: "Ilustração sobre Pods no Kubernetes"
 ---
 
-# Série k8s: Pods — o básico do Kubernetes
 
 Este post faz parte da série de fundamentos de Kubernetes. A ideia é apresentar conceitos essenciais em uma sequência prática, do básico ao avançado. Aqui vamos falar de **Pods**, o primeiro bloco de construção de qualquer aplicação no cluster.
 
@@ -241,15 +240,5 @@ Criar Pod com volume EmptyDir:
 kubectl apply -f pod-emptydir.yaml
 ```
 
----
-
-## Boas práticas rápidas
-
-- Evite usar Pods “soltos” em produção. Prefira **Deployments** para garantir réplicas e atualizações seguras.
-- Sempre defina **requests/limits** para CPU e memória.
-- Use **liveness/readiness probes** em cargas críticas.
-- Prefira **ConfigMaps/Secrets** para configuração em vez de hardcode.
-
----
 
 No próximo post da série, vamos aprofundar em **Deployments e Services**, com exemplos práticos.

@@ -6,11 +6,11 @@ tags: ["k8s", "kubernetes", "fundamentos", "containers", "cloud"]
 categories: ["k8s", "cloud"]
 draft: false
 cover:
-  image: "images/k8s-fundamentos-cover.png"
+  image: "images/k8s-fundamentos.png"
   alt: "Ilustração sobre fundamentos de Kubernetes"
 ---
 
-# Fundamentos de Kubernetes (k8s) — Parte 1
+
 
 Esta é a primeira parte de uma série de posts sobre Kubernetes. A ideia é construir uma base sólida, do básico ao avançado, passando por arquitetura, workloads, rede, storage, segurança, observabilidade e boas práticas de operação.
 

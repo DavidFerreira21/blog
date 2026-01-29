@@ -9,7 +9,7 @@ cover:
   alt: "Arte abstrata para post sobre Kind no WSL"
 ---
 
-# Guia rápido: Kind no WSL com Docker Desktop
+
 
 Este guia mostra como preparar o WSL2, integrar o Docker Desktop e subir um cluster Kind local para testes e laboratórios.
 
