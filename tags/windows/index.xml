@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Windows on David Ferreira — Cloud &amp; Platform Engineering</title><link>https://davidferreira21.github.io/blog/tags/windows/</link><description>Recent content in Windows on David Ferreira — Cloud &amp; Platform Engineering</description><generator>Hugo -- 0.146.0</generator><language>pt-br</language><lastBuildDate>Thu, 29 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://davidferreira21.github.io/blog/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Guia rápido: Kind no WSL com Docker Desktop</title><link>https://davidferreira21.github.io/blog/posts/install-kind/</link><pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate><guid>https://davidferreira21.github.io/blog/posts/install-kind/</guid><description>&lt;h1 id="guia-rápido-kind-no-wsl-com-docker-desktop">Guia rápido: Kind no WSL com Docker Desktop&lt;/h1>
-&lt;p>Este guia mostra como preparar o WSL2, integrar o Docker Desktop e subir um cluster Kind local para testes e laboratórios.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Windows on David Ferreira — Cloud &amp; Platform Engineering</title><link>https://davidferreira21.github.io/blog/tags/windows/</link><description>Recent content in Windows on David Ferreira — Cloud &amp; Platform Engineering</description><generator>Hugo -- 0.146.0</generator><language>pt-br</language><lastBuildDate>Thu, 29 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://davidferreira21.github.io/blog/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Guia rápido: Kind no WSL com Docker Desktop</title><link>https://davidferreira21.github.io/blog/posts/install-kind/</link><pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate><guid>https://davidferreira21.github.io/blog/posts/install-kind/</guid><description>&lt;p>Este guia mostra como preparar o WSL2, integrar o Docker Desktop e subir um cluster Kind local para testes e laboratórios.&lt;/p>
 &lt;h2 id="pré-requisitos-windows">Pré-requisitos (Windows)&lt;/h2>
 &lt;h3 id="1-instalarativar-o-wsl-e-definir-o-ubuntu-como-padrão">1) Instalar/ativar o WSL e definir o Ubuntu como padrão&lt;/h3>
 &lt;p>Abra o PowerShell como Administrador e execute:&lt;/p>
@@ -8,4 +7,11 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl --install -d Ubuntu
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Defina o Ubuntu como distribuição padrão:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="display:flex;">&lt;span>wsl --set-default Ubuntu
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Reinicie o Windows se for solicitado.&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Reinicie o Windows se for solicitado.&lt;/p>
+&lt;h3 id="2-instalar-o-docker-desktop">2) Instalar o Docker Desktop&lt;/h3>
+&lt;ol>
+&lt;li>Baixe e instale o Docker Desktop para Windows.&lt;/li>
+&lt;li>Abra o Docker Desktop e finalize o onboarding.&lt;/li>
+&lt;/ol>
+&lt;h3 id="3-habilitar-wsl-integration-no-docker-desktop">3) Habilitar WSL Integration no Docker Desktop&lt;/h3>
+&lt;p>No Docker Desktop:&lt;/p></description></item></channel></rss>
