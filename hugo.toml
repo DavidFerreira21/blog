@@ -33,19 +33,19 @@ languageCode = "pt-br"
   [[menu.main]]
     identifier = "categories/arquitetura"
     name = "Arquitetura"
-    url = "categories/arquitetura/"
+    url = "posts/?cat=arquitetura"
     weight = 20
 
   [[menu.main]]
     identifier = "categories/cloud"
     name = "Cloud"
-    url = "categories/cloud/"
+    url = "posts/?cat=cloud"
     weight = 30
 
   [[menu.main]]
     identifier = "categories/devops"
     name = "DevOps"
-    url = "categories/devops/"
+    url = "posts/?cat=devops"
     weight = 40
 
   [[menu.main]]
@@ -73,4 +73,4 @@ languageCode = "pt-br"
 
   [[params.profileMode.buttons]]
     name = "Arquitetura"
-    url = "categories/arquitetura/"
+    url = "posts/?cat=arquitetura"
