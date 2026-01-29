@@ -1,203 +1,54 @@
-[bep]: https://github.com/bep
-[bugs]: https://github.com/gohugoio/hugo/issues?q=is%3Aopen+is%3Aissue+label%3ABug
-[contributing]: CONTRIBUTING.md
-[create a proposal]: https://github.com/gohugoio/hugo/issues/new?labels=Proposal%2C+NeedsTriage&template=feature_request.md
-[documentation repository]: https://github.com/gohugoio/hugoDocs
-[documentation]: https://gohugo.io/documentation
-[dragonfly bsd, freebsd, netbsd, and openbsd]: https://gohugo.io/installation/bsd
-[features]: https://gohugo.io/about/features/
-[forum]: https://discourse.gohugo.io
-[friends]: https://github.com/gohugoio/hugo/graphs/contributors
-[go]: https://go.dev/
-[hugo modules]: https://gohugo.io/hugo-modules/
-[installation]: https://gohugo.io/installation
-[issue queue]: https://github.com/gohugoio/hugo/issues
-[linux]: https://gohugo.io/installation/linux
-[macos]: https://gohugo.io/installation/macos
-[prebuilt binary]: https://github.com/gohugoio/hugo/releases/latest
-[requesting help]: https://discourse.gohugo.io/t/requesting-help/9132
-[spf13]: https://github.com/spf13
-[static site generator]: https://en.wikipedia.org/wiki/Static_site_generator
-[support]: https://discourse.gohugo.io
-[themes]: https://themes.gohugo.io/
-[website]: https://gohugo.io
-[windows]: https://gohugo.io/installation/windows
+ # Blog - Hugo
 
-<a href="https://gohugo.io/"><img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg?sanitize=true" alt="Hugo" width="565"></a>
+Site pessoal em Hugo com foco em Cloud, Platform Engineering e DevOps.
 
-A fast and flexible static site generator built with love by [bep], [spf13], and [friends] in [Go].
+## Rodar localmente
 
+```bash
+hugo server -D
+```
+
+- O site fica em `http://localhost:1313`
+- `-D` inclui rascunhos (`draft: true`)
+
+## Build
+
+```bash
+hugo --minify
+```
+
+O resultado vai para `public/`.
+
+## Estrutura
+
+- `content/posts/`: posts do blog
+- `content/sobre/`: pagina Sobre
+- `static/`: imagens e arquivos estaticos
+- `assets/`: imagens processadas/pipe do tema
+- `layouts/`: overrides do tema (se houver)
+- `hugo.toml`: configuracao do site
+
+## Criar um novo post
+
+Copie um post existente e ajuste o front matter:
+
+```toml
 ---
-
-[![GoDoc](https://godoc.org/github.com/gohugoio/hugo?status.svg)](https://godoc.org/github.com/gohugoio/hugo)
-[![Tests on Linux, MacOS and Windows](https://github.com/gohugoio/hugo/workflows/Test/badge.svg)](https://github.com/gohugoio/hugo/actions?query=workflow%3ATest)
-[![Go Report Card](https://goreportcard.com/badge/github.com/gohugoio/hugo)](https://goreportcard.com/report/github.com/gohugoio/hugo)
-
-[Website] | [Installation] | [Documentation] | [Support] | [Contributing] | <a rel="me" href="https://fosstodon.org/@gohugoio">Mastodon</a>
-
-## Overview
-
-Hugo is a [static site generator] written in [Go], optimized for speed and designed for flexibility. With its advanced templating system and fast asset pipelines, Hugo renders a complete site in seconds, often less.
-
-Due to its flexible framework, multilingual support, and powerful taxonomy system, Hugo is widely used to create:
-
-- Corporate, government, nonprofit, education, news, event, and project sites
-- Documentation sites
-- Image portfolios
-- Landing pages
-- Business, professional, and personal blogs
-- Resumes and CVs
-
-Use Hugo's embedded web server during development to instantly see changes to content, structure, behavior, and presentation. Then deploy the site to your host, or push changes to your Git provider for automated builds and deployment.
-
-Hugo's fast asset pipelines include:
-
-- Image processing &ndash; Convert, resize, crop, rotate, adjust colors, apply filters, overlay text and images, and extract EXIF data
-- JavaScript bundling &ndash; Transpile TypeScript and JSX to JavaScript, bundle, tree shake, minify, create source maps, and perform SRI hashing.
-- Sass processing &ndash; Transpile Sass to CSS, bundle, tree shake, minify, create source maps, perform SRI hashing, and integrate with PostCSS
-- Tailwind CSS processing &ndash; Compile Tailwind CSS utility classes into standard CSS, bundle, tree shake, optimize, minify, perform SRI hashing, and integrate with PostCSS
-
-And with [Hugo Modules], you can share content, assets, data, translations, themes, templates, and configuration with other projects via public or private Git repositories.
-
-See the [features] section of the documentation for a comprehensive summary of Hugo's capabilities.
-
-## Sponsors
-
-<p>&nbsp;</p>
-<p float="left">
-  <a href="https://www.linode.com/?utm_campaign=hugosponsor&utm_medium=banner&utm_source=hugogithub" target="_blank"><img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/assets/images/sponsors/linode-logo_standard_light_medium.png" width="200" alt="Linode"></a>
-&nbsp;&nbsp;&nbsp;
-  <a href="https://www.jetbrains.com/go/?utm_source=OSS&utm_medium=referral&utm_campaign=hugo" target="_blank"><img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/assets/images/sponsors/goland.svg" width="200" alt="The complete IDE crafted for professional Go developers."></a>
-</p>
-
-## Editions
-
-Hugo is available in three editions: standard, extended, and extended/deploy. While the standard edition provides core functionality, the extended and extended/deploy editions offer advanced features.
-
-Feature|extended edition|extended/deploy edition
-:--|:-:|:-:
-Encode to the WebP format when [processing images]. You can decode WebP images with any edition.|:heavy_check_mark:|:heavy_check_mark:
-[Transpile Sass to CSS] using the embedded LibSass transpiler. You can use the [Dart Sass] transpiler with any edition.|:heavy_check_mark:|:heavy_check_mark:
-Deploy your site directly to a Google Cloud Storage bucket, an AWS S3 bucket, or an Azure Storage container. See&nbsp;[details].|:x:|:heavy_check_mark:
-
-[dart sass]: https://gohugo.io/functions/css/sass/#dart-sass
-[processing images]: https://gohugo.io/content-management/image-processing/
-[transpile sass to css]: https://gohugo.io/functions/css/sass/
-[details]: https://gohugo.io/hosting-and-deployment/hugo-deploy/
-
-Unless your specific deployment needs require the extended/deploy edition, we recommend the extended edition.
-
-## Installation
-
-Install Hugo from a [prebuilt binary], package manager, or package repository. Please see the installation instructions for your operating system:
-
-- [macOS]
-- [Linux]
-- [Windows]
-- [DragonFly BSD, FreeBSD, NetBSD, and OpenBSD]
-
-## Build from source
-
-Prerequisites to build Hugo from source:
-
-- Standard edition: Go 1.23.0 or later
-- Extended edition: Go 1.23.0 or later, and GCC
-- Extended/deploy edition: Go 1.23.0 or later, and GCC
-
-Build the standard edition:
-
-```text
-go install github.com/gohugoio/hugo@latest
+title: "Titulo do post"
+date: 2026-01-29T09:00:00-03:00
+tags: ["cloud", "devops"]
+categories: ["cloud"]
+draft: false
+---
 ```
 
-Build the extended edition:
+## Deploy (GitHub Pages)
 
-```text
-CGO_ENABLED=1 go install -tags extended github.com/gohugoio/hugo@latest
-```
+O deploy eh feito via GitHub Actions. Basta enviar para a branch principal.
 
-Build the extended/deploy edition:
+## Tema
 
-```text
-CGO_ENABLED=1 go install -tags extended,withdeploy github.com/gohugoio/hugo@latest
-```
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=gohugoio/hugo&type=Timeline)](https://star-history.com/#gohugoio/hugo&Timeline)
-
-## Documentation
-
-Hugo's [documentation] includes installation instructions, a quick start guide, conceptual explanations, reference information, and examples.
-
-Please submit documentation issues and pull requests to the [documentation repository].
-
-## Support
-
-Please **do not use the issue queue** for questions or troubleshooting. Unless you are certain that your issue is a software defect, use the [forum].
-
-Hugo’s [forum] is an active community of users and developers who answer questions, share knowledge, and provide examples. A quick search of over 20,000 topics will often answer your question. Please be sure to read about [requesting help] before asking your first question.
-
-## Contributing
-
-You can contribute to the Hugo project by:
-
-- Answering questions on the [forum]
-- Improving the [documentation]
-- Monitoring the [issue queue]
-- Creating or improving [themes]
-- Squashing [bugs]
-
-Please submit documentation issues and pull requests to the [documentation repository].
-
-If you have an idea for an enhancement or new feature, create a new topic on the [forum] in the "Feature" category. This will help you to:
-
-- Determine if the capability already exists
-- Measure interest
-- Refine the concept
-
-If there is sufficient interest, [create a proposal]. Do not submit a pull request until the project lead accepts the proposal.
-
-For a complete guide to contributing to Hugo, see the [Contribution Guide](CONTRIBUTING.md).
-
-## Dependencies
-
-Hugo stands on the shoulders of great open source libraries. Run `hugo env --logLevel info` to display a list of dependencies.
-
-<details>
-<summary>See current dependencies</summary>
-
-```text
-github.com/BurntSushi/locker="v0.0.0-20171006230638-a6e239ea1c69"
-github.com/PuerkitoBio/goquery="v1.10.1"
-github.com/alecthomas/chroma/v2="v2.15.0"
-github.com/andybalholm/cascadia="v1.3.3"
-github.com/armon/go-radix="v1.0.1-0.20221118154546-54df44f2176c"
-github.com/bep/clocks="v0.5.0"
-github.com/bep/debounce="v1.2.0"
-github.com/bep/gitmap="v1.6.0"
-github.com/bep/goat="v0.5.0"
-github.com/bep/godartsass/v2="v2.3.2"
-github.com/bep/golibsass="v1.2.0"
-github.com/bep/gowebp="v0.3.0"
-github.com/bep/imagemeta="v0.8.4"
-github.com/bep/lazycache="v0.7.0"
-github.com/bep/logg="v0.4.0"
-github.com/bep/mclib="v1.20400.20402"
-github.com/bep/overlayfs="v0.9.2"
-github.com/bep/simplecobra="v0.5.0"
-github.com/bep/tmc="v0.5.1"
-github.com/cespare/xxhash/v2="v2.3.0"
-github.com/clbanning/mxj/v2="v2.7.0"
-github.com/cpuguy83/go-md2man/v2="v2.0.4"
-github.com/disintegration/gift="v1.2.1"
-github.com/dlclark/regexp2="v1.11.5"
-github.com/dop251/goja="v0.0.0-20250125213203-5ef83b82af17"
-github.com/evanw/esbuild="v0.24.2"
-github.com/fatih/color="v1.18.0"
-github.com/frankban/quicktest="v1.14.6"
-github.com/fsnotify/fsnotify="v1.8.0"
-github.com/getkin/kin-openapi="v0.129.0"
+Tema: PaperMod.
 github.com/ghodss/yaml="v1.0.0"
 github.com/go-openapi/jsonpointer="v0.21.0"
 github.com/go-openapi/swag="v0.23.0"
