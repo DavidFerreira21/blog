@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>David Ferreira — Cloud &amp; Platform Engineering</title>
-    <link>http://localhost:1313/blog/</link>
-    <description>Recent content on David Ferreira — Cloud &amp; Platform Engineering</description>
+    <title>Docker-Desktop on David Ferreira — Cloud &amp; Platform Engineering</title>
+    <link>http://localhost:1313/blog/tags/docker-desktop/</link>
+    <description>Recent content in Docker-Desktop on David Ferreira — Cloud &amp; Platform Engineering</description>
     <generator>Hugo -- 0.146.0</generator>
     <language>pt-br</language>
-    <lastBuildDate>Wed, 28 Jan 2026 09:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Alinhatórios: guia rápido para alinhar squads</title>
-      <link>http://localhost:1313/blog/posts/alignatorios/</link>
-      <pubDate>Wed, 28 Jan 2026 09:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/blog/posts/alignatorios/</guid>
-      <description>Um framework leve para alinhar times, metas e entregas sem ruído.</description>
-    </item>
+    <lastBuildDate>Wed, 28 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/docker-desktop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Guia rápido: Kind no WSL com Docker Desktop</title>
       <link>http://localhost:1313/blog/posts/install-kind/</link>
@@ -31,29 +24,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Defina o Ubuntu como distro padrão:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --set-default Ubuntu
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Reinicie o Windows se for solicitado.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Lab: KIND &#43; ArgoCD</title>
-      <link>http://localhost:1313/blog/labs/kind-argocd/</link>
-      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/labs/kind-argocd/</guid>
-      <description>&lt;p&gt;Laboratório prático para subir um cluster KIND com ArgoCD.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Meu primeiro post com Hugo</title>
-      <link>http://localhost:1313/blog/posts/segundo-post/</link>
-      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/posts/segundo-post/</guid>
-      <description>&lt;p&gt;Este blog nasce da necessidade de documentar labs,
-arquiteturas e aprendizados de forma pública e versionada.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Meu Segundo post com Hugo</title>
-      <link>http://localhost:1313/blog/posts/primeiro-post/</link>
-      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/posts/primeiro-post/</guid>
-      <description>&lt;p&gt;Este blog nasce da necessidade de documentar labs,
-arquiteturas e aprendizados de forma pública e versionada.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

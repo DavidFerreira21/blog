@@ -16,6 +16,23 @@
       <description>Um framework leve para alinhar times, metas e entregas sem ruído.</description>
     </item>
     <item>
+      <title>Guia rápido: Kind no WSL com Docker Desktop</title>
+      <link>http://localhost:1313/blog/posts/install-kind/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/posts/install-kind/</guid>
+      <description>&lt;h1 id=&#34;guia-rápido-kind-no-wsl-com-docker-desktop&#34;&gt;Guia rápido: Kind no WSL com Docker Desktop&lt;/h1&gt;
+&lt;p&gt;Este guia mostra como preparar o WSL2, integrar o Docker Desktop e subir um cluster Kind local para testes e labs.&lt;/p&gt;
+&lt;h2 id=&#34;pré-requisitos-windows&#34;&gt;Pré-requisitos (Windows)&lt;/h2&gt;
+&lt;h3 id=&#34;1-instalarativar-o-wsl-e-definir-o-ubuntu-como-padrão&#34;&gt;1) Instalar/ativar o WSL e definir o Ubuntu como padrão&lt;/h3&gt;
+&lt;p&gt;Abra o PowerShell como Administrador e execute:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --install
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --set-default-version &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --install -d Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Defina o Ubuntu como distro padrão:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wsl --set-default Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Reinicie o Windows se for solicitado.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Meu primeiro post com Hugo</title>
       <link>http://localhost:1313/blog/posts/segundo-post/</link>
       <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>

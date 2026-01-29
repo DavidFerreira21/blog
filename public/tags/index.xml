@@ -37,6 +37,13 @@
       <description></description>
     </item>
     <item>
+      <title>Docker-Desktop</title>
+      <link>http://localhost:1313/blog/tags/docker-desktop/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/docker-desktop/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Git</title>
       <link>http://localhost:1313/blog/tags/git/</link>
       <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
@@ -58,10 +65,38 @@
       <description></description>
     </item>
     <item>
+      <title>K8s</title>
+      <link>http://localhost:1313/blog/tags/k8s/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/k8s/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kind</title>
+      <link>http://localhost:1313/blog/tags/kind/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/kind/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Kubernetes</title>
       <link>http://localhost:1313/blog/tags/kubernetes/</link>
       <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/blog/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>http://localhost:1313/blog/tags/windows/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/windows/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wsl2</title>
+      <link>http://localhost:1313/blog/tags/wsl2/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/wsl2/</guid>
       <description></description>
     </item>
   </channel>
