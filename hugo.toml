@@ -25,6 +25,12 @@ languageCode = "pt-br"
 [menu]
 
   [[menu.main]]
+    identifier = "inicio"
+    name = "Início"
+    url = "/blog/"
+    weight = 5
+
+  [[menu.main]]
     identifier = "posts"
     name = "Posts"
     url = "posts/"
