@@ -10,15 +10,15 @@ cover:
   alt: "Ilustração sobre fundamentos de Kubernetes"
 ---
 
-
+# Série k8s: Fundamentos de Kubernetes
 
 Esta é a primeira parte de uma série de posts sobre Kubernetes. A ideia é construir uma base sólida, do básico ao avançado, passando por arquitetura, workloads, rede, storage, segurança, observabilidade e boas práticas de operação.
 
-Se você está começando agora, este post é o ponto de partida. Se já usa Kubernetes no dia a dia, use como revisão rápida dos conceitos fundamentais.
+Se você está começando agora, este post é o ponto de partida. Se já usa Kubernetes no dia a dia, use como revisão rápida dos conceitos fundamentais e como referência quando surgir dúvida.
 
 ## Sobre esta série
 
-Nesta série vamos abordar alguns fundamentos:
+Nesta série vamos abordar, de forma direta e prática:
 
 - Conceitos base de containers e runtimes
 - Componentes do Kubernetes e arquitetura do cluster
@@ -37,20 +37,22 @@ Nesta série vamos abordar alguns fundamentos:
 
 ## O que é o Kubernetes?
 
-O projeto Kubernetes foi desenvolvido pela Google, em meados de 2014, para atuar como um orquestrador de contêineres para a empresa. O Kubernetes (k8s), cujo termo em grego significa "timoneiro", é um projeto *open source* que conta com *design* e desenvolvimento baseados no projeto Borg, que também é da Google. Alguns outros produtos disponíveis no mercado, tais como o Apache Mesos e o Cloud Foundry, também surgiram a partir do projeto Borg.
+Kubernetes é um orquestrador de contêineres: ele decide **onde** executar cada aplicação, **como** manter tudo saudável e **como** escalar quando necessário. Pense nele como o “sistema operacional” do seu cluster.
 
-Como Kubernetes é uma palavra difícil de se pronunciar e escrever, a comunidade simplesmente o apelidou de **k8s**, seguindo o padrão i18n (a letra "k" seguida por oito letras e o "s" no final), pronunciando-se simplesmente "kates".
+O projeto foi desenvolvido pela Google, em meados de 2014, como *open source*, com base no aprendizado do projeto Borg. Alguns outros produtos, como Apache Mesos e Cloud Foundry, também surgiram dessa mesma linha de pesquisa.
+
+Como Kubernetes é uma palavra difícil de se pronunciar e escrever, a comunidade apelidou de **k8s**, seguindo o padrão i18n (a letra "k" seguida por oito letras e o "s" no final), pronunciando-se “kates”.
 
 
 ### Alguns sites que devemos visitar
 
-Abaixo temos os sites oficiais do projeto do Kubernetes:
+Abaixo estão os sites oficiais do projeto:
 
 - https://kubernetes.io
 - https://github.com/kubernetes/kubernetes/
 - https://github.com/kubernetes/kubernetes/issues
 
-Abaixo temos as páginas oficiais das certificações do Kubernetes (CKA, CKAD e CKS):
+E aqui estão as páginas oficiais das certificações (CKA, CKAD e CKS):
 
 - https://www.cncf.io/certification/cka/
 - https://www.cncf.io/certification/ckad/
@@ -58,13 +60,13 @@ Abaixo temos as páginas oficiais das certificações do Kubernetes (CKA, CKAD e
 
 ## O container engine
 
-Antes de começar a falar um pouco mais sobre o Kubernetes, precisamos entender alguns componentes importantes no ecossistema. Um desses componentes é o container engine.
+Antes de aprofundar no Kubernetes, vale entender algumas peças do ecossistema. Uma delas é o **container engine**.
 
-O *container engine* é o responsável por gerenciar imagens e volumes, garantindo o isolamento dos recursos que os containers estão utilizando (CPU, memória, storage, rede, etc.).
+O *container engine* gerencia imagens, volumes e redes, garantindo o isolamento dos recursos que os containers usam (CPU, memória, storage, rede, etc.). É a camada que executa containers no dia a dia.
 
-Hoje temos diversas opções para se utilizar como *container engine*, que até pouco tempo atrás eram quase sinônimo de Docker.
+Hoje existem várias opções de *container engine*, que até pouco tempo atrás eram quase sinônimo de Docker.
 
-Opções como Docker, CRI-O e Podman são bem conhecidas e preparadas para ambiente produtivo. O Docker, como todos sabem, é o container engine mais popular e utiliza o containerd como runtime.
+Opções como Docker, CRI-O e Podman são bem conhecidas e preparadas para ambiente produtivo. O Docker é o mais popular e utiliza o containerd como runtime.
 
 **Container runtime?** O que é isso?
 
@@ -72,35 +74,35 @@ Calma que vou explicar já já, mas antes temos que falar sobre a OCI. :)
 
 ### OCI — Open Container Initiative
 
-A OCI é uma organização sem fins lucrativos que tem como objetivo padronizar a criação de containers, para que possam ser executados em qualquer ambiente. A OCI foi fundada em 2015 pela Docker, CoreOS, Google, IBM, Microsoft, Red Hat e VMware e hoje faz parte da Linux Foundation.
+A OCI é uma organização sem fins lucrativos que define padrões para containers, garantindo que funcionem em qualquer ambiente. Foi fundada em 2015 por Docker, CoreOS, Google, IBM, Microsoft, Red Hat e VMware, e hoje faz parte da Linux Foundation.
 
-O principal projeto criado pela OCI é o *runc*, que é o principal container runtime de baixo nível, e utilizado por diferentes *container engines*, como o Docker.
+O principal projeto da OCI é o *runc*, um runtime de baixo nível usado por diferentes *container engines*, como o Docker.
 
-O *runc* é um projeto open source, escrito em Go, e seu código está disponível no GitHub.
+O *runc* é open source, escrito em Go, e seu código está disponível no GitHub.
 
-Agora sim já podemos falar sobre o que é o container runtime.
+Agora sim podemos falar sobre o que é o container runtime.
 
 ### O container runtime
 
-Para que seja possível executar containers nos nós, é necessário ter um *container runtime* instalado em cada um deles.
+Para executar containers nos nós, é necessário ter um *container runtime* instalado em cada um deles. É ele quem “roda” o container de fato.
 
-O *container runtime* é o responsável por executar os containers nos nós. Quando você está utilizando Docker ou Podman para executar containers na sua máquina, você está fazendo uso de algum *container runtime* (ou melhor, o seu container engine está fazendo uso de algum runtime).
+Quando você usa Docker ou Podman, está usando um *container runtime* por trás. Em outras palavras: o engine faz a gestão, e o runtime executa.
 
-Temos quatro tipos de *container runtime*:
+Existem quatro tipos comuns de *container runtime*:
 
-- **Low-level**: executados diretamente pelo Kernel, como runc, crun e runsc.
-- **High-level**: executados por um *container engine*, como containerd, CRI-O e Podman.
-- **Sandbox**: executados por um *container engine* e responsáveis por executar containers de forma segura, usando uma camada adicional. O gVisor é um exemplo desse tipo.
-- **Virtualized**: executados por um *container engine* e responsáveis por executar containers de forma segura em máquinas virtuais. A performance é menor do que quando são executados nativamente. O Kata Containers é um exemplo.
+- **Low-level**: são os runtimes “de base”, que conversam diretamente com o kernel e criam os processos dos containers. Exemplos: runc, crun e runsc.
+- **High-level**: são camadas que gerenciam o ciclo de vida do container e usam um runtime low-level por baixo. Exemplos: containerd, CRI-O e Podman.
+- **Sandbox**: adicionam uma camada extra de isolamento para segurança (útil em ambientes multi-tenant). O gVisor é um exemplo desse tipo.
+- **Virtualized**: executam containers dentro de VMs leves para aumentar isolamento. A segurança é maior, mas há custo de performance. O Kata Containers é um exemplo.
 
 
 ## Arquitetura do k8s
 
-Assim como os demais orquestradores disponíveis, o k8s segue um modelo *control plane/workers*, constituindo assim um *cluster*, onde para seu funcionamento é recomendado no mínimo três nós: o nó *control plane*, responsável (por padrão) pelo gerenciamento do *cluster*, e os demais como *workers*, executores das aplicações que queremos executar sobre esse *cluster*.
+Assim como outros orquestradores, o k8s segue o modelo **control plane + workers**. O control plane gerencia o cluster; os workers executam as aplicações. Em produção, recomenda-se ao menos três nós de control plane para alta disponibilidade.
 
-É possível criar um cluster Kubernetes rodando em apenas um nó, porém é recomendado somente para fins de estudos e nunca para produção.
+É possível rodar um cluster em um único nó, mas apenas para estudos e labs.
 
-Caso você queira utilizar o Kubernetes em sua máquina local, existem diversas soluções que criam um cluster Kubernetes usando VMs ou Docker. Alguns exemplos:
+Se você quiser usar Kubernetes localmente, existem várias opções que criam um cluster usando VMs ou Docker. Exemplos:
 
 - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start): cluster Kubernetes com containers Docker. Útil para estudos, desenvolvimento e testes. **Não usar em produção**.
 - [Minikube](https://github.com/kubernetes/minikube): cluster local com um nó. **Não usar em produção**.
@@ -108,14 +110,26 @@ Caso você queira utilizar o Kubernetes em sua máquina local, existem diversas 
 - [k3s](https://k3s.io): distribuição leve, executa inclusive em Raspberry Pi.
 - [k0s](https://k0sproject.io): distribuição em binário único, focada em simplicidade. **Pode ser usada em produção**.
 
-### Componentes principais
 
-- **API Server**: fornece a API (JSON/HTTP) do cluster. A comunicação com o cluster ocorre principalmente via `kubectl`.
-- **etcd**: *datastore* chave-valor distribuído que armazena o estado do cluster. Por padrão roda no control plane.
-- **Scheduler**: escolhe o nó onde um *pod* será executado, baseado em recursos e políticas.
-- **Controller Manager**: garante que o estado atual do cluster converge para o estado desejado (ex.: número de réplicas).
-- **Kubelet**: é o agente do k8s que roda nos nós workers. Ele gerencia os *pods* em cada nó.
-- **Kube-proxy**: responsável pelo roteamento e pelo balanceamento de tráfego dentro do nó.
+
+
+### Componentes principais
+Os componentes do Kubernetes se dividem em **control plane** e **workers**. O control plane toma decisões globais (como agendamento) e reage a eventos do cluster; os workers executam as cargas.
+
+**Control plane**
+
+- **kube-apiserver**: é o “front door” do cluster. Recebe todas as requisições do `kubectl` e dos demais componentes. Valida, autentica e autoriza as chamadas antes de gravar ou consultar estado no etcd.
+- **etcd**: banco chave‑valor distribuído que guarda **todo o estado do cluster** (objetos, configurações e status). É crítico para recuperação de desastres; por isso backup é obrigatório em produção.
+- **kube-scheduler**: escolhe em qual nó um Pod vai rodar. Ele avalia recursos disponíveis, afinidades, tolerations, políticas e outras restrições para decidir o melhor nó.
+- **kube-controller-manager**: executa controladores que garantem o estado desejado do cluster. Ex.: se um Deployment quer 3 réplicas e só existem 2, o controller cria a terceira.
+- **cloud-controller-manager**: integra o cluster ao provedor de nuvem. Ele cria e gerencia recursos externos (load balancers, rotas, volumes) usando a API do cloud provider.
+
+**Workers**
+
+- **kubelet**: agente em cada nó que “materializa” os Pods. Ele conversa com o runtime, inicia containers, monitora saúde e reporta status ao control plane.
+- **kube-proxy**: implementa regras de rede para Services. Ele cria o encaminhamento (iptables/ipvs) que faz o tráfego chegar ao Pod correto.
+
+![Arquitetura do Kubernetes](images/k8s-arch.png)
 
 ## Portas que devemos nos preocupar
 
@@ -129,7 +143,7 @@ TCP|Inbound|10250|Kubelet API|Self, Control plane
 TCP|Inbound|10251|kube-scheduler|Self
 TCP|Inbound|10252|kube-controller-manager|Self
 
-*Toda porta marcada por * é customizável, você precisa se certificar que a porta alterada também esteja aberta.*
+*Toda porta marcada por * é customizável. Se você alterar, garanta que a porta também esteja liberada no firewall.*
 
 **Workers**
 
@@ -140,17 +154,17 @@ TCP|Inbound|30000-32767|NodePort|Services All
 
 ## Conceitos-chave do k8s
 
-É importante saber que o k8s gerencia contêineres de forma diferente de outros orquestradores, como Docker Swarm. Ele não trata contêineres diretamente, mas os organiza dentro de *pods*. Vamos aos principais conceitos:
+O k8s não gerencia containers diretamente; ele organiza tudo dentro de **Pods**. Abaixo estão os conceitos mais usados no dia a dia, com uma explicação direta do “para quê” de cada um:
 
-- **Pod**: menor objeto do k8s. Agrupa um ou mais contêineres que compartilham recursos.
-- **Deployment**: garante réplicas e gerencia o ciclo de vida das aplicações.
-- **ReplicaSet**: mantém a quantidade desejada de pods em execução.
-- **Services**: expõem aplicações via ClusterIP, NodePort ou LoadBalancer.
-- **Volumes**: armazenamento compartilhado/persistente para pods.
-- **Probes**: checagens de saúde (*liveness*, *readiness*, *startup*).
-- **Ingress**: regras HTTP/HTTPS para expor serviços com host/path/TLS.
-- **Secrets**: dados sensíveis (tokens, senhas, chaves) em base64.
-- **ConfigMap**: configurações não sensíveis em chave/valor.
+- **Pod**: menor unidade do k8s. Agrupa um ou mais containers que compartilham rede, volumes e ciclo de vida. Se o Pod morrer, ele é recriado.
+- **Deployment**: forma padrão de rodar aplicações. Garante número de réplicas, faz rollouts/rollbacks e mantém a aplicação disponível durante atualizações.
+- **ReplicaSet**: é o motor por trás do Deployment. Ele garante que a quantidade desejada de Pods esteja sempre rodando.
+- **Service**: cria um endereço estável para acessar Pods. Pode expor internamente (ClusterIP) ou externamente (NodePort/LoadBalancer).
+- **Volume**: define como dados são armazenados e compartilhados entre containers. Pode ser temporário (emptyDir) ou persistente (PV/PVC).
+- **Probes**: checagens de saúde dos containers. *Liveness* reinicia, *readiness* controla se recebe tráfego e *startup* dá tempo extra para inicialização.
+- **Ingress**: camada HTTP/HTTPS que define regras de entrada para múltiplos serviços, usando hosts, paths e TLS.
+- **Secret**: guarda dados sensíveis (tokens, senhas, chaves). Evita hardcode em manifestos.
+- **ConfigMap**: guarda configurações não sensíveis em chave/valor para aplicações.
 
 ---
 
