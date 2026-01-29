@@ -11,4 +11,4 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl --install -d Ubuntu
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Defina o Ubuntu como distribuição padrão:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="display:flex;">&lt;span>wsl --set-default Ubuntu
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Reinicie o Windows se for solicitado.&lt;/p></description></item><item><title>Lab: KIND + ArgoCD</title><link>https://davidferreira21.github.io/blog/labs/kind-argocd/</link><pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate><guid>https://davidferreira21.github.io/blog/labs/kind-argocd/</guid><description>&lt;p>Laboratório prático para subir um cluster KIND com ArgoCD.&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Reinicie o Windows se for solicitado.&lt;/p></description></item></channel></rss>
