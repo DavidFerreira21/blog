@@ -1,6 +1,6 @@
 ---
 title: "Meu Segundo post com Hugo"
-date: 2026-01-28
+date: 2026-01-12T09:00:00-03:00
 tags: ["hugo", "blog", "git"]
 categories: [ "arquitetura", "k8s", "terraform"]
 draft: false

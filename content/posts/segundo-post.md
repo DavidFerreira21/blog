@@ -1,6 +1,6 @@
 ---
 title: "Meu primeiro post com Hugo"
-date: 2026-01-28
+date: 2026-01-05T09:00:00-03:00
 tags: ["hugo", "blog", "git"]
 draft: false
 categories: ["devops", "arquitetura", "terraform"]
