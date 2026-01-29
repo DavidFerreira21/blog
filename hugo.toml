@@ -27,31 +27,31 @@ languageCode = "pt-br"
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
-    url = "posts/"
+    url = "/posts/"
     weight = 10
 
   [[menu.main]]
     identifier = "categories/arquitetura"
     name = "Arquitetura"
-    url = "categories/arquitetura/"
+    url = "/categories/arquitetura/"
     weight = 20
 
   [[menu.main]]
     identifier = "categories/cloud"
     name = "Cloud"
-    url = "categories/cloud/"
+    url = "/categories/cloud/"
     weight = 30
 
   [[menu.main]]
     identifier = "categories/devops"
     name = "DevOps"
-    url = "categories/devops/"
+    url = "/categories/devops/"
     weight = 40
 
   [[menu.main]]
     identifier = "sobre"
     name = "Sobre"
-    url = "sobre/"
+    url = "/sobre/"
     weight = 50
 
   # Arquitetura/DevOps removidos do menu por enquanto
@@ -69,8 +69,8 @@ languageCode = "pt-br"
 
   [[params.profileMode.buttons]]
     name = "Labs"
-    url = "labs/"
+    url = "/labs/"
 
   [[params.profileMode.buttons]]
     name = "Arquitetura"
-    url = "categories/arquitetura/"
+    url = "/categories/arquitetura/"
