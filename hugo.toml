@@ -31,21 +31,21 @@ languageCode = "pt-br"
     weight = 10
 
   [[menu.main]]
-    identifier = "arquitetura"
+    identifier = "categories/arquitetura"
     name = "Arquitetura"
-    url = "posts/?cat=arquitetura"
+    url = "categories/arquitetura/"
     weight = 20
 
   [[menu.main]]
-    identifier = "cloud"
+    identifier = "categories/cloud"
     name = "Cloud"
-    url = "posts/?cat=cloud"
+    url = "categories/cloud/"
     weight = 30
 
   [[menu.main]]
-    identifier = "devops"
+    identifier = "categories/devops"
     name = "DevOps"
-    url = "posts/?cat=devops"
+    url = "categories/devops/"
     weight = 40
 
   [[menu.main]]
