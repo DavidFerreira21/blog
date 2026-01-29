@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="about-hero">
+    <div class="about-hero__inner">
+        <div class="about-hero__copy">
+            <p class="about-hero__kicker">Sobre mim</p>
+            <h1 class="about-hero__title">{{ .Title }}</h1>
+            {{- with .Params.tagline }}
+            <p class="about-hero__tagline">{{ . }}</p>
+            {{- end }}
+            {{- with .Description }}
+            <p class="about-hero__lead">{{ . }}</p>
+            {{- end }}
+            {{- with .Params.highlights }}
+            <div class="about-hero__highlights">
+                {{- range . }}
+                <div class="about-hero__pill">{{ . }}</div>
+                {{- end }}
+            </div>
+            {{- end }}
+        </div>
+        <div class="about-hero__media">
+            {{- with .Params.photo }}
+            <img class="about-photo" src="{{ . | relURL }}" alt="Foto de David Ferreira" loading="lazy" decoding="async">
+            {{- end }}
+        </div>
+    </div>
+</section>
+
+<section class="about-body">
+    <div class="about-body__inner">
+        <div class="about-body__content">
+            {{ .Content }}
+        </div>
+    </div>
+</section>
+{{ end }}

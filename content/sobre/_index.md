@@ -1,9 +1,14 @@
 ---
 title: "Sobre mim"
 description: "Experiência em Cloud, infraestrutura e arquitetura de plataformas."
+tagline: "Cloud • Platform Engineering • DevOps"
+photo: "images/foto.jpg"
+highlights:
+  - "16+ anos em Cloud e Infraestrutura"
+  - "AWS e Azure, arquitetura e operação em escala"
+  - "Platform Engineering, automação e IaC"
+  - "FinOps, segurança e governança"
 ---
-
-<img class="about-photo" src="images/foto.jpg" alt="Foto de David Ferreira" loading="lazy" decoding="async">
 
 Sou especialista em Cloud e Infraestrutura com mais de 16 anos de experiência projetando, automatizando e sustentando ambientes corporativos complexos, atuando tanto em On-Premises quanto em Cloud, com forte foco em AWS e Azure.
 

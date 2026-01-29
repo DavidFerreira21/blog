@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Arquitetura on David Ferreira — Cloud &amp; Platform Engineering</title>
-    <link>http://localhost:1313/categories/arquitetura/</link>
+    <link>http://localhost:1313/blog/categories/arquitetura/</link>
     <description>Recent content in Arquitetura on David Ferreira — Cloud &amp; Platform Engineering</description>
     <generator>Hugo -- 0.146.0</generator>
     <language>pt-br</language>
     <lastBuildDate>Wed, 28 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/arquitetura/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/categories/arquitetura/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Meu primeiro post com Hugo</title>
-      <link>http://localhost:1313/posts/segundo-post/</link>
+      <link>http://localhost:1313/blog/posts/segundo-post/</link>
       <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/segundo-post/</guid>
+      <guid>http://localhost:1313/blog/posts/segundo-post/</guid>
       <description>&lt;p&gt;Este blog nasce da necessidade de documentar labs,
 arquiteturas e aprendizados de forma pública e versionada.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Meu Segundo post com Hugo</title>
-      <link>http://localhost:1313/posts/primeiro-post/</link>
+      <link>http://localhost:1313/blog/posts/primeiro-post/</link>
       <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/primeiro-post/</guid>
+      <guid>http://localhost:1313/blog/posts/primeiro-post/</guid>
       <description>&lt;p&gt;Este blog nasce da necessidade de documentar labs,
 arquiteturas e aprendizados de forma pública e versionada.&lt;/p&gt;</description>
     </item>
