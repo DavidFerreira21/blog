@@ -1,6 +1,6 @@
 ---
 title: "Guia rápido: Kind no WSL com Docker Desktop"
-date: 2026-01-28
+date: 2026-01-29
 tags: ["k8s", "kubernetes", "kind", "wsl2", "docker-desktop", "windows"]
 categories: ["k8s", "devops"]
 draft: false
