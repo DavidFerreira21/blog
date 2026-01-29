@@ -1,0 +1,14 @@
+public/
+resources/
+.hugo_build.lock
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Node (if used)
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
