@@ -10,6 +10,7 @@ cover:
   alt: "Ilustração sobre Pods no Kubernetes"
 ---
 
+# Série k8s: Pods — o básico do Kubernetes
 
 Este post faz parte da série de fundamentos de Kubernetes. A ideia é apresentar conceitos essenciais em uma sequência prática, do básico ao avançado. Aqui vamos falar de **Pods**, o primeiro bloco de construção de qualquer aplicação no cluster.
 
@@ -17,15 +18,75 @@ Se você está começando, este é o momento de entender o que é um Pod e como 
 
 ## O que é um Pod
 
-Pod é a menor unidade de execução do Kubernetes. Ele representa **um ou mais containers** que rodam juntos e compartilham os mesmos recursos de rede, volumes e configurações. Em termos práticos, um Pod funciona como uma “caixa” que agrupa containers que precisam estar próximos, falando entre si via `localhost` e compartilhando o mesmo ciclo de vida.
+Pod é a menor unidade que o Kubernetes cria e gerencia. Ele funciona como um “envelope” que agrupa um ou mais containers que precisam rodar juntos e compartilhar recursos.
 
-Alguns pontos importantes:
+Dentro de um Pod, os containers:
 
-- **Rede compartilhada**: todos os containers do Pod compartilham o mesmo IP e as mesmas portas.
-- **Volumes compartilhados**: volumes montados no Pod podem ser acessados por todos os containers.
-- **Ciclo de vida conjunto**: os containers sobem e descem juntos; o Pod é a unidade que o Kubernetes gerencia.
+- **Compartilham rede** (mesmo IP e portas);
+- **Compartilham volumes** (dados podem ser lidos/escritos entre eles);
+- **Compartilham ciclo de vida** (sobem e descem juntos).
 
-Vamos para alguns comandos e exemplos práticos. Se você ainda não tem um cluster k8s local, utilize o nosso guia de instalação e configuração do Kind: https://davidferreira21.github.io/blog/posts/install-kind/
+Você pode ter dois cenários principais:
+
+- **Pod com um container**: é o caso mais comum. O Pod é apenas o wrapper do container.
+- **Pod com múltiplos containers**: usado quando os containers são fortemente acoplados, como um app + sidecar de logs ou proxy.
+
+## Ciclo de vida do Pod
+
+O ciclo de vida de um Pod descreve as fases pelas quais ele passa até ser finalizado. Entender isso ajuda muito no troubleshooting:
+
+- **Pending**: o Pod foi aceito pelo cluster, mas ainda não foi agendado ou as imagens não foram baixadas.
+- **Running**: o Pod já foi agendado em um nó e pelo menos um container está em execução.
+- **Succeeded**: todos os containers terminaram com sucesso (comum em Jobs).
+- **Failed**: algum container terminou com erro e o Pod não conseguiu completar.
+- **Unknown**: o estado não pôde ser obtido do nó (problema de comunicação).
+
+Durante a execução, você também verá motivos comuns como `CrashLoopBackOff`, `ImagePullBackOff` e `ErrImagePull`, que indicam problemas de inicialização e download de imagens.
+
+## Init Containers (containers de inicialização)
+
+Init Containers são executados **antes** dos containers principais. Eles são úteis para tarefas de preparação, como:
+
+- baixar configurações;
+- verificar dependências;
+- preparar volumes ou permissões.
+
+Se um init container falha, o Pod não avança para o estado `Running` até que ele finalize com sucesso.
+
+## Sidecar Containers (containers auxiliares)
+
+Sidecar containers rodam **junto** com o container principal dentro do mesmo Pod. Eles são usados para complementar a aplicação, por exemplo:
+
+- coletar logs;
+- fazer proxy/mesh;
+- sincronizar arquivos ou configurar cache.
+
+O sidecar compartilha rede e volumes com o container principal, por isso é ideal quando as funções precisam estar bem acopladas.
+
+## Ephemeral Containers (depuração)
+
+Ephemeral containers são containers **temporários** usados para depuração. Eles não fazem parte do manifesto original e podem ser adicionados em um Pod em execução para investigar problemas.
+
+Eles não reiniciam automaticamente e são indicados apenas para troubleshooting.
+
+## Disruptions (interrupções)
+
+Disruptions são eventos que interrompem Pods, como:
+
+- atualização de nós;
+- escalonamento do cluster;
+- manutenção planejada;
+- falhas de infraestrutura.
+
+Para reduzir impacto, usamos **Pod Disruption Budgets (PDBs)**, que definem quantos Pods podem ficar indisponíveis durante uma manutenção.
+
+> Importante: você não usa vários containers no Pod para escalar. Escala se faz criando **mais Pods**, normalmente via Deployment.
+
+Para que os Pods rodem, cada nó precisa ter um **container runtime** instalado (ex.: containerd ou CRI-O).
+
+## Mão na massa
+
+Vamos para alguns comandos e exemplos práticos. Se você ainda não tem um cluster k8s local, utilize o nosso guia de instalação e configuração do Kind: [instalar Kind no WSL](https://davidferreira21.github.io/blog/posts/install-kind/).
 
 ## Consultar Pods
 
@@ -240,5 +301,6 @@ Criar Pod com volume EmptyDir:
 kubectl apply -f pod-emptydir.yaml
 ```
 
+---
 
 No próximo post da série, vamos aprofundar em **Deployments e Services**, com exemplos práticos.
