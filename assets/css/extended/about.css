@@ -89,13 +89,14 @@
 
 html[data-theme="dark"] .about-hero,
 html[data-theme="dark"] .about-body {
-  background: #0f1115;
+  background: var(--theme);
 }
 
 html[data-theme="dark"] .about-hero__pill,
 html[data-theme="dark"] .about-body__inner {
-  background: rgba(20, 24, 32, 0.92);
+  background: transparent;
   border-color: rgba(240, 242, 245, 0.12);
+  box-shadow: none;
 }
 
 html[data-theme="dark"] .about-body__content p,
