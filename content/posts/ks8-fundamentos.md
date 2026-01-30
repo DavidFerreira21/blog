@@ -129,7 +129,7 @@ Os componentes do Kubernetes se dividem em **control plane** e **workers**. O co
 - **kubelet**: agente em cada nó que “materializa” os Pods. Ele conversa com o runtime, inicia containers, monitora saúde e reporta status ao control plane.
 - **kube-proxy**: implementa regras de rede para Services. Ele cria o encaminhamento (iptables/ipvs) que faz o tráfego chegar ao Pod correto.
 
-{{< figure src="images/k8s-arch.png" alt="Arquitetura do Kubernetes" >}}
+![Arquitetura do Kubernetes](https://davidferreira21.github.io/blog/images/k8s-arch.png)
 
 ## Portas que devemos nos preocupar
 
