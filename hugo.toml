@@ -10,7 +10,7 @@ languageCode = "pt-br"
 [params.home]
   kicker = "Engineering"
   title = "David Ferreira"
-  subtitle = "Cloud • Platform Engineering • DevOps • GitOps"
+  subtitle = "Cloud Architect • Platform Engineering • DevOps"
   banner = "images/hero.png"
   primaryButtonLabel = "Ver posts"
   primaryButtonUrl = "posts/"
@@ -66,7 +66,7 @@ languageCode = "pt-br"
 [params.profileMode]
   enabled = true
   title = "David Ferreira"
-  subtitle = "Cloud • Platform Engineering • DevOps • GitOps"
+  subtitle = "Cloud Architect • Platform Engineering • DevOps"
   imageUrl = "images/hero.png"
   imageTitle = "Cloud & Platform Engineering"
   imageWidth = 320  
