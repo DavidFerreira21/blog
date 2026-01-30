@@ -1,0 +1,108 @@
+---
+title: "Kubernetes 1.35: principais mudanças e impactos"
+date: 2026-01-30T09:00:00-03:00
+description: "Resumo das mudanças mais relevantes do Kubernetes 1.35, com foco em deprecações e impactos operacionais."
+tags: ["k8s", "kubernetes", "release", "v1.35", "changelog"]
+categories: ["k8s", "cloud"]
+draft: false
+cover:
+  image: "images/k8s-1-35.png"
+  alt: "Ilustração sobre novidades do Kubernetes 1.35"
+---
+
+# Kubernetes 1.35: principais mudanças e impactos
+
+Este post é um resumo objetivo das mudanças mais relevantes do Kubernetes **v1.35**, com foco no que pode impactar clusters em produção.
+
+A versão 1.35 foi lançada em **17 de dezembro de 2025**, então as mudanças abaixo já estão válidas para quem começou a atualizar ou planeja atualizar nos próximos ciclos.
+
+## Deprecações e remoções (o que exige atenção)
+
+### Remoção do cgroup v1
+O suporte ao **cgroup v1** foi removido. Se seus nós ainda usam distribuições antigas sem cgroup v2, o **kubelet não inicia**. A ação recomendada é migrar para cgroup v2 antes de atualizar o cluster.
+
+### Depreciação do modo ipvs no kube-proxy
+O modo **ipvs** do kube-proxy foi depreciado. Ele ainda funciona nesta versão, mas gera aviso e o caminho recomendado é migrar para **nftables**.
+
+### Última chamada para containerd 1.x
+O Kubernetes 1.35 é a **última versão** que suporta containerd **1.x**. Antes de seguir para a próxima minor, é preciso migrar para **containerd 2.0+**.
+
+## Destaques importantes do 1.35
+
+### Melhor estabilidade durante reinício do kubelet (GA)
+O kubelet agora restaura corretamente o estado dos containers após restart, evitando que Pods saudáveis sejam marcados como `NotReady` temporariamente. Isso reduz interrupções durante manutenção de nós.
+
+### DRA sempre habilitado (GA)
+O **Dynamic Resource Allocation (DRA)** passa a ficar sempre habilitado no 1.35 (já estava estável no 1.34). Isso reforça o caminho para recursos avançados de hardware com melhor integração.
+
+### In-place Pod Resize (GA)
+Agora é possível ajustar CPU/memória de Pods em execução sem recriar o Pod. Isso reduz janelas de indisponibilidade em workloads stateful e simplifica operações de capacidade. É especialmente útil para picos sazonais e tuning rápido sem novas implantações.
+
+### Pod Certificates (beta)
+Introduz certificados nativos para workloads, com rotação automática. Reduz a dependência de controladores externos e sidecars para identidade de serviço. Também padroniza a emissão/renovação e melhora governança de credenciais no cluster.
+
+### Storage version migration in-tree (beta, habilitado por padrão)
+A migração de storage version passa a ser integrada ao control plane, evitando ferramentas externas e simplificando upgrades. Isso reduz esforço operacional e torna a transição entre versões de API mais previsível.
+
+### RestartPolicyRules por container (beta, habilitado por padrão)
+Permite regras de restart por container, evitando o reschedule do Pod inteiro em falhas localizadas. Ajuda a isolar falhas em sidecars e manter o Pod saudável quando apenas um container precisa reiniciar.
+
+### Tokens de CSI via secrets field (beta, opt-in)
+Drivers CSI podem receber tokens de ServiceAccount via `secrets`, reduzindo risco de vazamento em logs e melhorando a rastreabilidade. Isso também facilita políticas de segurança mais rígidas para armazenamento.
+
+### Taints/tolerations com operadores numéricos (alpha)
+Habilita programação baseada em critérios numéricos, útil para políticas de SLA e qualidade de nós. Dá mais precisão para separar cargas por capacidade e qualidade do ambiente. Por ser alpha, requer feature gate para uso.
+
+### Topologia no Downward API (beta)
+Novos labels de topologia passam a ser injetados automaticamente em Pods, impactando estratégias de observabilidade e auto-labeling. Isso facilita métricas por zona/região sem depender de webhooks ou mutações externas.
+
+### Node declared features (alpha)
+Quando habilitado, os nós passam a declarar features suportadas, evitando scheduling em nós incompatíveis com recursos específicos. É um passo importante para clusters heterogêneos com hardwares distintos.
+
+### Deployment terminatingReplicas (beta)
+O Deployment passa a expor quantos Pods estão em término (`terminatingReplicas`), facilitando a observabilidade de rollouts e detecção de stuck termination.
+
+### StatefulSet maxUnavailable (beta, habilitado por padrão)
+Permite controlar quantos Pods de um StatefulSet podem ficar indisponíveis durante atualizações, acelerando upgrades com mais segurança.
+
+### HPA tolerance configurável (beta, habilitado por padrão)
+O HPA passa a permitir ajustar a tolerância de escala por workload, evitando flapping e melhorando estabilidade de autoscaling.
+
+### Verificação de credenciais para imagens em cache (beta, habilitado por padrão)
+Mesmo com a imagem já presente no nó, o kubelet valida credenciais antes de usá-la. Isso evita bypass de segurança em imagens privadas.
+
+### User namespaces em Pods (beta)
+Mapeia o root do container para UID não privilegiado no host, melhorando isolamento e segurança em ambientes multi-tenant.
+
+### Image/OCI artifact volume (beta, habilitado por padrão)
+Permite entregar dados/binaries via imagens OCI sem init containers. Requer runtime compatível e simplifica distribuição de assets.
+
+### Mutable volume attach limits (beta, habilitado por padrão)
+O `CSINode.allocatable.count` torna-se dinâmico, reduzindo Pods presos em `ContainerCreating` por limites de attach desatualizados.
+
+### metadata.generation no Pod (GA)
+Introduz `metadata.generation` e `status.observedGeneration` para saber se o kubelet já processou mudanças no Pod.
+
+### Job managedBy (GA)
+Permite delegar Jobs a outros controladores, útil para integrações com plataformas de batch e orquestração externa.
+
+### SPDY -> WebSockets (GA)
+Transição definitiva para WebSockets em `kubectl exec/port-forward`, reduzindo dependências legadas e melhorando compatibilidade.
+
+### PreferSameNode Traffic Distribution (GA)
+Permite priorizar tráfego para endpoints no mesmo nó, reduzindo latência e custo de rede interna.
+
+## Nota do ecossistema (fora do escopo do 1.35)
+
+O projeto **Ingress NGINX** entrou em **modo de manutenção limitada** e será aposentado em **março de 2026**. A recomendação oficial é migrar para **Gateway API** ou outro controller ativo. Isso **não é uma mudança do Kubernetes 1.35**, mas é relevante para planejamento de rede em clusters atuais.
+
+## Checklist rápido antes do upgrade
+
+- Validar que **todos os nós** usam cgroup v2.
+- Verificar runtime e atualizar **containerd para 2.x**.
+- Migrar `kube-proxy` para **nftables** se ainda estiver em ipvs.
+- Avaliar migração do **Ingress NGINX** para Gateway API.
+
+---
+
+Existem outros updates menores além dos listados acima. Para mais detalhes, consulte a documentação oficial: https://kubernetes.io/blog/2025/12/17/kubernetes-v1-35-release/
