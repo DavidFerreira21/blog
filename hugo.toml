@@ -6,6 +6,7 @@ languageCode = "pt-br"
 [params]
   ShowReadingTime = true
   ShowCodeCopyButtons = true
+  hideFooter = true
 
 [params.home]
   kicker = "Engineering"
