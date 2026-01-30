@@ -1,26 +1,26 @@
 :root {
   --shell-bg: #0d0f13;
   --shell-bg-soft: #12161e;
-  --shell-border: rgba(255, 255, 255, 0.08);
-  --shell-glow: rgba(61, 214, 140, 0.12);
+  --shell-border: rgba(255, 255, 255, 0.06);
+  --shell-glow: transparent;
 }
 
 html[data-theme="dark"] {
   --shell-bg: #0b0e13;
   --shell-bg-soft: #111721;
-  --shell-border: rgba(240, 242, 245, 0.08);
-  --shell-glow: rgba(61, 214, 140, 0.14);
+  --shell-border: rgba(240, 242, 245, 0.06);
+  --shell-glow: transparent;
 }
 
 header.header {
   background: linear-gradient(180deg, var(--shell-bg) 0%, var(--shell-bg-soft) 100%) !important;
   border-bottom: 1px solid var(--shell-border);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 40px var(--shell-glow);
+  box-shadow: none;
   backdrop-filter: blur(10px);
 }
 
 .custom-footer {
   background: linear-gradient(180deg, var(--shell-bg-soft) 0%, var(--shell-bg) 100%);
   border-top: 1px solid var(--shell-border);
-  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.35), 0 0 40px var(--shell-glow);
+  box-shadow: none;
 }
