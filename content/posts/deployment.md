@@ -188,4 +188,4 @@ kubectl delete -f deployment.yaml
 
 ---
 
-No próximo post da série, vamos detalhar **Services** e como expor aplicações dentro e fora do cluster.
+No próximo post da série, vamos detalhar **ReplicaSet, DaemonSet e StatefulSet** .

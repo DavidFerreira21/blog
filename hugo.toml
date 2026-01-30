@@ -27,7 +27,7 @@ languageCode = "pt-br"
   [[menu.main]]
     identifier = "inicio"
     name = "Início"
-    url = "blog/"
+    url = ""
     weight = 5
 
   [[menu.main]]

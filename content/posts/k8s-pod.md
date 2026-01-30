@@ -303,4 +303,4 @@ kubectl apply -f pod-emptydir.yaml
 
 ---
 
-No próximo post da série, vamos aprofundar em **Deployments e Services**, com exemplos práticos.
+No próximo post da série, vamos aprofundar em **Deployments**, com exemplos práticos.
