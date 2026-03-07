@@ -86,7 +86,7 @@ Para que os Pods rodem, cada nó precisa ter um **container runtime** instalado 
 
 ## Mão na massa
 
-Vamos para alguns comandos e exemplos práticos. Se você ainda não tem um cluster k8s local, utilize o nosso guia de instalação e configuração do Kind: [instalar Kind no WSL](https://davidferreira21.github.io/blog/posts/install-kind/).
+Vamos para alguns comandos e exemplos práticos. Se você ainda não tem um cluster k8s local, utilize o nosso guia de instalação e configuração do Kind: [instalar Kind no WSL](/posts/install-kind/).
 
 ## Consultar Pods
 

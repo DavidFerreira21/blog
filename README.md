@@ -2,7 +2,7 @@
 
 Site pessoal em Hugo com foco em Cloud, Platform Engineering e DevOps.
 
-Endereço do blog: `https://davidferreira21.github.io/blog/`
+Endereço do blog: `https://davidferreira.blog/`
 
 ## Rodar localmente
 
