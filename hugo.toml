@@ -1,4 +1,5 @@
 baseURL = "https://davidferreira.blog/"
+cleanDestinationDir = true
 title = "David Ferreira — Cloud & Platform Engineering"
 theme = "PaperMod"
 languageCode = "pt-br"
