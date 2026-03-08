@@ -10,8 +10,6 @@ cover:
   alt: "Ilustração sobre probes no Kubernetes"
 ---
 
-# Série k8s: Probes — liveness, readiness e startup
-
 Este post faz parte da série de fundamentos de Kubernetes. Aqui vamos entender **probes**, as verificações de saúde que o Kubernetes usa para decidir se um container deve reiniciar, entrar no balanceamento ou aguardar inicialização.
 
 ## O que são probes

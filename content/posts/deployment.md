@@ -10,8 +10,6 @@ cover:
   alt: "Ilustração sobre Deployments no Kubernetes"
 ---
 
-# Série k8s: Deployments — como versionar e escalar aplicações
-
 Este post faz parte da série de fundamentos de Kubernetes. Aqui vamos falar de **Deployments**, o recurso que mantém aplicações rodando com réplicas, atualizações seguras e possibilidade de rollback.
 
 Se você já entendeu Pods, agora o Deployment é o próximo passo natural para rodar aplicações de forma confiável.

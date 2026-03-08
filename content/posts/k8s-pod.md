@@ -10,8 +10,6 @@ cover:
   alt: "Ilustração sobre Pods no Kubernetes"
 ---
 
-# Série k8s: Pods — o básico do Kubernetes
-
 Este post faz parte da série de fundamentos de Kubernetes. A ideia é apresentar conceitos essenciais em uma sequência prática, do básico ao avançado. Aqui vamos falar de **Pods**, o primeiro bloco de construção de qualquer aplicação no cluster.
 
 Se você está começando, este é o momento de entender o que é um Pod e como ele se comporta. Se já usa Kubernetes, este texto serve como referência rápida com exemplos diretos.

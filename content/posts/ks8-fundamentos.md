@@ -10,8 +10,6 @@ cover:
   alt: "Ilustração sobre fundamentos de Kubernetes"
 ---
 
-# Série k8s: Fundamentos de Kubernetes
-
 Esta é a primeira parte de uma série de posts sobre Kubernetes. A ideia é construir uma base sólida, do básico ao avançado, passando por arquitetura, workloads, rede, storage, segurança, observabilidade e boas práticas de operação.
 
 Se você está começando agora, este post é o ponto de partida. Se já usa Kubernetes no dia a dia, use como revisão rápida dos conceitos fundamentais e como referência quando surgir dúvida.

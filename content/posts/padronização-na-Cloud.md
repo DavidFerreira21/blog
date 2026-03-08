@@ -8,10 +8,6 @@ cover:
   image: "images/padronizacao.png"
   alt: "Arte abstrata sobre padronização em cloud"
 ---
-
-
-# A importância da padronização na Cloud
-
 Gostaria de compartilhar uma reflexão baseada na minha experiência trabalhando com infraestrutura cloud. Ao longo da minha carreira, alguns padrões se repetem com frequência, e a importância da padronização foi um dos aprendizados que mais se consolidou ao longo do tempo.
 
 ## O começo: velocidade acima de tudo

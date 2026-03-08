@@ -10,8 +10,6 @@ cover:
   alt: "Ilustração sobre workloads no Kubernetes"
 ---
 
-# Série k8s: ReplicaSet, DaemonSet e StatefulSet — quando usar cada um
-
 Este post faz parte da série de fundamentos de Kubernetes. Aqui vamos entender **três tipos de workloads** que aparecem o tempo todo no dia a dia: ReplicaSet, DaemonSet e StatefulSet.
 
 A ideia é explicar o papel de cada um, quando usar e quais comandos básicos ajudam na operação.

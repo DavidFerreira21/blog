@@ -88,9 +88,9 @@
 .posts-hero__summary {
   margin: 1.1rem 0 0;
   max-width: 62ch;
-  color: #a9b4c4;
+  color: #afbbc9;
   font-size: 1.03rem;
-  line-height: 1.6;
+  line-height: 1.68;
 }
 
 .posts-hero__meta {
@@ -181,6 +181,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  box-shadow: 0 8px 20px rgba(18, 24, 19, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.posts-category-dropdown summary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(18, 24, 19, 0.11);
 }
 
 .posts-category-dropdown summary::-webkit-details-marker {
@@ -251,7 +258,7 @@ html[data-theme="dark"] .posts-category-option:hover {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4rem;
+  gap: 1.55rem;
 }
 
 .terms-grid {
@@ -298,6 +305,19 @@ html[data-theme="dark"] .posts-category-option:hover {
   overflow: hidden;
   transition: transform 220ms ease, box-shadow 220ms ease;
   position: relative;
+  animation: posts-rise 520ms ease both;
+}
+
+.posts-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(61, 214, 140, 0.85), rgba(111, 179, 255, 0.55));
+  opacity: 0.75;
+  z-index: 2;
 }
 
 html[data-theme="dark"] .posts-card {
@@ -306,7 +326,7 @@ html[data-theme="dark"] .posts-card {
 
 .posts-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.16);
 }
 
 .posts-card__link {
@@ -325,6 +345,11 @@ html[data-theme="dark"] .posts-card {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 320ms ease;
+}
+
+.posts-card:hover .posts-card__media img {
+  transform: scale(1.04);
 }
 
 .posts-card__meta,
@@ -348,17 +373,22 @@ html[data-theme="dark"] .posts-card {
 .posts-card__section {
   color: var(--home-accent-strong, #0a6d3d);
   font-weight: 600;
+  padding: 0.12rem 0.46rem;
+  border-radius: 999px;
+  background: rgba(15, 157, 88, 0.12);
 }
 
 .posts-card__title {
   margin: 0 0 0.7rem;
-  font-size: 1.13rem;
-  line-height: 1.28;
+  font-size: 1.17rem;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
 }
 
 .posts-card__summary {
   margin: 0 0 1rem;
   color: var(--secondary);
+  line-height: 1.6;
 }
 
 .posts-card__tags {
@@ -374,6 +404,17 @@ html[data-theme="dark"] .posts-card {
   border-radius: 999px;
   background: rgba(15, 157, 88, 0.12);
   color: var(--home-accent-strong, #0a6d3d);
+}
+
+@keyframes posts-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 1100px) {
