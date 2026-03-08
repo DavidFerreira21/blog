@@ -5,6 +5,7 @@ theme = "PaperMod"
 languageCode = "pt-br"
 
 [params]
+  author = "David Ferreira"
   ShowReadingTime = true
   ShowCodeCopyButtons = true
   ShowShareButtons = true

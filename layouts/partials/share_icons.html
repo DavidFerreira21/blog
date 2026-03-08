@@ -1,4 +1,6 @@
-{{- $pageurl := .Permalink -}}
+{{- $pageurl := .Permalink | urlquery -}}
+{{- $description := (or .Description .Summary .Title) | plainify | htmlUnescape | chomp -}}
+{{- $shareText := printf "%s — %s" (.Title | plainify) $description | urlquery -}}
 
 <ul class="share-buttons">
   <li>
@@ -6,7 +8,7 @@
       target="_blank"
       rel="noopener noreferrer"
       aria-label="share {{ .Title | plainify }} on linkedin"
-      href="https://www.linkedin.com/sharing/share-offsite/?url={{ $pageurl }}">
+      href="https://www.linkedin.com/feed/?shareActive=true&amp;text={{ $shareText }}&amp;shareUrl={{ $pageurl }}">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M20.45 20.45H17V14.86c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.68H9.56V9h3.32v1.56h.05c.46-.88 1.58-1.8 3.26-1.8 3.49 0 4.13 2.3 4.13 5.29v6.4ZM5.34 7.43a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88ZM6.95 20.45H3.72V9H6.95v11.45Z"/>
       </svg>

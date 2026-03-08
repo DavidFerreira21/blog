@@ -1,5 +1,10 @@
 {{- /* Force mixed-content resources to upgrade to HTTPS on supported browsers. */ -}}
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+{{- if .IsPage }}
+  {{- with (.Params.author | default site.Params.author) }}
+<meta property="article:author" content="{{ . }}">
+  {{- end }}
+{{- end }}
 <script>
   document.documentElement.dataset.theme = "dark";
   try { localStorage.setItem("pref-theme", "dark"); } catch (e) {}
