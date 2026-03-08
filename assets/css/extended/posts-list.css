@@ -6,8 +6,8 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-top: calc(var(--gap) * -1);
-  padding: 3.2rem var(--gap) 2.2rem;
-  min-height: clamp(420px, 54vh, 600px);
+  padding: 2.8rem var(--gap) 1.9rem;
+  min-height: clamp(360px, 48vh, 520px);
   border-bottom: 1px solid rgba(240, 242, 245, 0.08);
   background:
     radial-gradient(circle at 11% 20%, var(--posts-glow), transparent 34%),
@@ -78,7 +78,7 @@
 }
 
 .posts-hero--taxonomy {
-  min-height: clamp(420px, 54vh, 600px);
+  min-height: clamp(360px, 48vh, 520px);
 }
 
 .posts-hero__inner--taxonomy {
@@ -428,8 +428,8 @@ html[data-theme="dark"] .posts-card {
   .posts-hero {
     margin-top: 0;
     min-height: auto;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding-top: 2.5rem;
+    padding-bottom: 1.7rem;
   }
 
   .posts-grid,

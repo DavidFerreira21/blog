@@ -3,13 +3,13 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-top: calc(var(--gap) * -1);
-  padding: 3.2rem var(--gap) 2.4rem;
+  padding: 2.8rem var(--gap) 2rem;
   background:
     radial-gradient(circle at 12% 18%, rgba(36, 208, 143, 0.18), transparent 36%),
     radial-gradient(circle at 86% 72%, rgba(88, 162, 255, 0.14), transparent 34%),
     linear-gradient(140deg, #060d16 0%, #0b1622 62%, #071220 100%);
   border-bottom: 1px solid rgba(240, 242, 245, 0.08);
-  min-height: clamp(420px, 54vh, 620px);
+  min-height: clamp(360px, 50vh, 540px);
   display: flex;
   align-items: center;
 }
@@ -199,8 +199,8 @@ html[data-theme="dark"] .about-body__content p:first-child {
 @media (max-width: 720px) {
   .about-hero {
     margin-top: 0;
-    padding-top: 2.5rem;
-    padding-bottom: 2rem;
+    padding-top: 2.2rem;
+    padding-bottom: 1.7rem;
   }
 
   .about-body__inner {
