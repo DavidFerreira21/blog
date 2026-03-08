@@ -104,6 +104,7 @@ header.header {
 }
 
 button#theme-toggle {
+  display: none !important;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 999px;

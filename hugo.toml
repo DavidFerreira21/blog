@@ -8,6 +8,8 @@ languageCode = "pt-br"
   ShowReadingTime = true
   ShowCodeCopyButtons = true
   hideFooter = true
+  defaultTheme = "dark"
+  disableThemeToggle = true
 
 [params.home]
   kicker = "Engineering"

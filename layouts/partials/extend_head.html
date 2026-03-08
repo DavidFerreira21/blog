@@ -1,2 +1,6 @@
 {{- /* Force mixed-content resources to upgrade to HTTPS on supported browsers. */ -}}
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<script>
+  document.documentElement.dataset.theme = "dark";
+  try { localStorage.setItem("pref-theme", "dark"); } catch (e) {}
+</script>
