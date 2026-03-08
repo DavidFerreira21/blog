@@ -7,6 +7,8 @@ languageCode = "pt-br"
 [params]
   ShowReadingTime = true
   ShowCodeCopyButtons = true
+  ShowShareButtons = true
+  ShareButtons = ["linkedin"]
   hideFooter = true
   defaultTheme = "dark"
   disableThemeToggle = true

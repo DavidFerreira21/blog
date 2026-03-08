@@ -145,6 +145,41 @@
   background: rgba(15, 157, 88, 0.12);
 }
 
+.post-single .share-buttons {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.post-single .share-buttons li {
+  list-style: none;
+}
+
+.post-single .share-buttons a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.42rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(61, 214, 140, 0.28);
+  background: rgba(15, 157, 88, 0.12);
+  color: #d3efe1;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.post-single .share-buttons a svg {
+  width: 14px;
+  height: 14px;
+}
+
+.post-single .share-buttons a:hover {
+  border-color: rgba(61, 214, 140, 0.42);
+  background: rgba(15, 157, 88, 0.2);
+}
+
 @media (max-width: 900px) {
   .post-single .post-content {
     padding: 1.5rem 1.25rem 1.8rem;
