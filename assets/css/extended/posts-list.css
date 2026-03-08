@@ -78,7 +78,7 @@
 }
 
 .posts-hero--taxonomy {
-  min-height: clamp(310px, 44vh, 440px);
+  min-height: clamp(420px, 54vh, 600px);
 }
 
 .posts-hero__inner--taxonomy {
