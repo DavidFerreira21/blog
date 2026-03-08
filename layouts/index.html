@@ -8,23 +8,30 @@
     <div class="hero-inner">
         <div class="hero-copy">
             {{- with $home.kicker }}
-            <p class="hero-kicker">{{ . }}</p>
+            <p class="hero-kicker"><span></span>{{ . }}</p>
             {{- end }}
             <h1 class="hero-title">{{ $home.title | default site.Title }}</h1>
             {{- with $home.subtitle }}
             <p class="hero-subtitle">{{ . }}</p>
             {{- end }}
 
-            {{- if and $home.secondaryButtonLabel $home.secondaryButtonUrl }}
+            {{- if or (and $home.primaryButtonLabel $home.primaryButtonUrl) (and $home.secondaryButtonLabel $home.secondaryButtonUrl) }}
             <div class="hero-actions">
+                {{- if and $home.primaryButtonLabel $home.primaryButtonUrl }}
+                <a class="hero-btn primary" href="{{ $home.primaryButtonUrl | relURL }}">{{ $home.primaryButtonLabel }}</a>
+                {{- end }}
+                {{- if and $home.secondaryButtonLabel $home.secondaryButtonUrl }}
                 <a class="hero-btn ghost" href="{{ $home.secondaryButtonUrl | relURL }}">{{ $home.secondaryButtonLabel }}</a>
+                {{- end }}
             </div>
             {{- end }}
-
+            <p class="hero-note">Artigos objetivos sobre cloud, arquitetura e platform engineering, com foco em prática e operação real.</p>
         </div>
 
         <div class="hero-media">
-            <img src="{{ $banner | absURL }}" alt="{{ $home.title | default site.Title }}">
+            <div class="hero-media__frame">
+                <img src="{{ $banner | absURL }}" alt="{{ $home.title | default site.Title }}">
+            </div>
         </div>
     </div>
 </section>
@@ -40,11 +47,11 @@
     {{- with site.Taxonomies.categories }}
     <div class="category-select">
         <details class="category-dropdown">
-            <summary>All categories</summary>
+            <summary>Todas as categorias</summary>
             <div class="category-options">
-                <a class="category-option" href="{{ "posts/" | relURL }}">All categories</a>
-                {{- range $name, $taxonomy := . }}
-                <a class="category-option" href="{{ printf "posts/?cat=%s" ($name | urlize) | relURL }}">{{ $name }}</a>
+                <a class="category-option" href="{{ "posts/" | relURL }}">Todas as categorias</a>
+                {{- range $name, $_ := . }}
+                <a class="category-option" href="{{ printf "categories/%s/" ($name | urlize) | relURL }}">{{ $name }}</a>
                 {{- end }}
             </div>
         </details>

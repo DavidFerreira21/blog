@@ -1,48 +1,61 @@
 {{ define "main" }}
-{{- $pages := where site.RegularPages "Type" "posts" -}}
-{{- $pages = $pages.ByDate.Reverse -}}
+{{- $pages := .Pages.ByDate.Reverse -}}
 {{- $count := len $pages -}}
+{{- $currentTerm := .Data.Term | default "" | urlize -}}
+{{- $currentLabel := .Title -}}
+{{- $categoryBlurb := "Conteúdos técnicos organizados por categoria para facilitar estudo e consulta rápida." -}}
+{{- if eq $currentTerm "cloud" -}}
+{{- $categoryBlurb = "Arquitetura, governança, automação e operação em ambientes cloud com foco prático em AWS." -}}
+{{- else if eq $currentTerm "k8s" -}}
+{{- $categoryBlurb = "Série de conteúdos sobre Kubernetes: fundamentos, operação e boas práticas para produção." -}}
+{{- else if eq $currentTerm "devops" -}}
+{{- $categoryBlurb = "Práticas DevOps para acelerar entrega com confiabilidade: CI/CD, automação e troubleshooting." -}}
+{{- end -}}
 
 <section class="posts-hero posts-hero--taxonomy">
     <div class="posts-hero__inner posts-hero__inner--taxonomy">
         <div class="posts-hero__copy">
-            <p class="posts-hero__kicker">Posts</p>
+            <p class="posts-hero__kicker">{{ .Data.Plural | humanize }}</p>
             <h1 class="posts-hero__title">{{ .Title }}</h1>
-            {{- with .Params.description }}
-            <p class="posts-hero__subtitle">{{ . }}</p>
-            {{- end }}
-            <p class="posts-hero__summary">Biblioteca técnica com conteúdos de cloud, arquitetura e devops, organizada para consulta rápida.</p>
+            <p class="posts-hero__subtitle">{{ $count }} {{ if eq $count 1 }}publicação{{ else }}publicações{{ end }}</p>
+            <p class="posts-hero__summary">{{ $categoryBlurb }}</p>
 
             <div class="posts-hero__meta">
                 <span class="posts-hero__pill"><strong>{{ $count }}</strong> {{ if eq $count 1 }}post{{ else }}posts{{ end }}</span>
                 <span class="posts-hero__pill">Atualizado {{ with index $pages 0 }}{{ .Date.Format "02 Jan 2006" }}{{ else }}-{{ end }}</span>
             </div>
 
+            {{- if eq .Data.Singular "category" }}
             <nav class="posts-hero__category-tabs" aria-label="Categorias principais">
-                <a class="posts-hero__category-tab is-active" href="{{ "posts/" | relURL }}">Todas</a>
+                <a class="posts-hero__category-tab{{ if eq $currentTerm "" }} is-active{{ end }}" href="{{ "posts/" | relURL }}">Todas</a>
                 {{- with site.Taxonomies.categories }}
                 {{- range $name, $_ := . }}
-                <a class="posts-hero__category-tab" href="{{ printf "categories/%s/" ($name | urlize) | relURL }}">{{ $name }}</a>
+                {{- $slug := $name | urlize -}}
+                <a class="posts-hero__category-tab{{ if eq $slug $currentTerm }} is-active{{ end }}" href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
                 {{- end }}
                 {{- end }}
             </nav>
+            {{- end }}
         </div>
     </div>
 </section>
 
 <section class="posts-feed">
+    {{- if eq .Data.Singular "category" }}
     {{- with site.Taxonomies.categories }}
     <div class="posts-category-select">
         <details class="posts-category-dropdown">
-            <summary>Todas as categorias</summary>
+            <summary>{{ $currentLabel }}</summary>
             <div class="posts-category-options">
-                <a class="posts-category-option is-active" href="{{ "posts/" | relURL }}">Todas as categorias</a>
+                <a class="posts-category-option" href="{{ "posts/" | relURL }}">Todas as categorias</a>
                 {{- range $name, $_ := . }}
-                <a class="posts-category-option" href="{{ printf "categories/%s/" ($name | urlize) | relURL }}">{{ $name }}</a>
+                {{- $slug := $name | urlize -}}
+                <a class="posts-category-option{{ if eq $slug $currentTerm }} is-active{{ end }}" href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
                 {{- end }}
             </div>
         </details>
     </div>
+    {{- end }}
     {{- end }}
 
     <div class="posts-grid">

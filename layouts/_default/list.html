@@ -1,0 +1,51 @@
+{{ define "main" }}
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+
+<section class="posts-hero">
+    <div class="posts-hero__inner">
+        <div class="posts-hero__copy">
+            <p class="posts-hero__kicker">Seção</p>
+            <h1 class="posts-hero__title">{{ .Title }}</h1>
+            {{- with .Description }}
+            <p class="posts-hero__subtitle">{{ . }}</p>
+            {{- end }}
+        </div>
+    </div>
+</section>
+
+<section class="posts-feed">
+    <div class="posts-grid">
+        {{- range $pages }}
+        <article class="posts-card">
+            <a class="posts-card__link" href="{{ .RelPermalink }}">
+                {{- $cover := "" -}}
+                {{- with .Params.cover }}
+                {{- $cover = .image | default "" -}}
+                {{- end -}}
+                {{- if not $cover }}
+                {{- with .Params.image }}
+                {{- $cover = . -}}
+                {{- end -}}
+                {{- end -}}
+                {{- if $cover }}
+                <div class="posts-card__media">
+                    <img src="{{ $cover | relURL }}" alt="{{ with .Params.cover }}{{ .alt | default $.Title }}{{ else }}{{ .Title }}{{ end }}" loading="lazy" decoding="async">
+                </div>
+                {{- end }}
+                <div class="posts-card__meta">
+                    <span class="posts-card__section">
+                        {{- with .CurrentSection }}{{ .Title }}{{- else }}{{ .Section | title }}{{- end }}
+                    </span>
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+                </div>
+                <h3 class="posts-card__title">{{ .Title }}</h3>
+                {{- with .Summary }}
+                <p class="posts-card__summary">{{ . | plainify | truncate 160 }}</p>
+                {{- end }}
+            </a>
+        </article>
+        {{- end }}
+    </div>
+</section>
+
+{{ end }}

@@ -2,7 +2,7 @@
 title: "A importância da padronização na Cloud"
 date: 2026-01-28
 tags: ["cloud", "governanca", "padronizacao", "automacao", "finops", "iac"]
-categories: ["cloud", "governance"]
+categories: ["cloud", "governance","Arquitetura"]
 draft: false
 cover:
   image: "images/padronizacao.png"

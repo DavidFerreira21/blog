@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{- $terms := .Data.Terms.Alphabetical -}}
+
+<section class="posts-hero">
+    <div class="posts-hero__inner">
+        <div class="posts-hero__copy">
+            <p class="posts-hero__kicker">Navegação</p>
+            <h1 class="posts-hero__title">{{ .Title }}</h1>
+            <p class="posts-hero__subtitle">Escolha um tópico para ver os conteúdos filtrados.</p>
+        </div>
+    </div>
+</section>
+
+<section class="posts-feed">
+    <div class="terms-grid">
+        {{- range $terms }}
+        <a class="term-card" href="{{ .Page.RelPermalink }}">
+            <h2 class="term-card__title">{{ .Page.Title }}</h2>
+            <p class="term-card__count">{{ .Count }} {{ if eq .Count 1 }}publicação{{ else }}publicações{{ end }}</p>
+        </a>
+        {{- end }}
+    </div>
+</section>
+
+{{ end }}
