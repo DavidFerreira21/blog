@@ -5,6 +5,9 @@ description: "O que diferencia um modulo Terraform generico de um modulo corpora
 tags: ["terraform", "iac", "aws", "modulos", "governanca", "seguranca", "platform-engineering", "vpc", "rds", "ec2", "opa"]
 categories: ["terraform", "devops", "nuvem", "governanca"]
 draft: false
+cover:
+  image: "images/terraform-module.png"
+  alt: "Ilustracao abstrata sobre modulos Terraform corporativos"
 ---
 
 > Um módulo genérico cria infraestrutura. Um módulo corporativo entrega infraestrutura que funciona dentro da sua organização.
@@ -153,7 +156,7 @@ Módulo sem versionamento é módulo sem governança.
 
 Cada módulo corporativo deve ter seu próprio repositório — separado do repositório de infraestrutura que o consome. Essa separação garante que cada módulo tenha seu próprio ciclo de vida, seu próprio processo de revisão e seu próprio histórico de mudanças:
 
-```
+```text
 github.com/org/terraform-module-vpc
 github.com/org/terraform-module-rds
 github.com/org/terraform-module-ec2
