@@ -32,3 +32,74 @@
         </div>
     </div>
 </div>
+
+<script>
+  (() => {
+    const normalize = (value) =>
+      (value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const formatCount = (count) => `${count} ${count === 1 ? "post" : "posts"}`;
+
+    document.querySelectorAll("[data-posts-search-root]").forEach((root) => {
+      const input = root.querySelector("[data-posts-search-input]");
+      const clearButton = root.querySelector("[data-posts-search-clear]");
+      const status = root.parentElement.querySelector("[data-posts-search-status]");
+      const emptyState = root.parentElement.querySelector("[data-posts-search-empty]");
+      const items = Array.from(root.parentElement.querySelectorAll("[data-post-search-item]"));
+
+      if (!input || !status || !emptyState || !items.length) {
+        return;
+      }
+
+      const indexedItems = items.map((item) => ({
+        element: item,
+        searchText: normalize(item.dataset.search || item.textContent),
+      }));
+
+      const update = () => {
+        const rawQuery = input.value.trim();
+        const query = normalize(rawQuery);
+        let visibleCount = 0;
+
+        indexedItems.forEach(({ element, searchText }) => {
+          const matches = !query || searchText.includes(query);
+          element.hidden = !matches;
+          if (matches) {
+            visibleCount += 1;
+          }
+        });
+
+        clearButton.hidden = rawQuery.length === 0;
+
+        if (!query) {
+          status.textContent = `${formatCount(indexedItems.length)} disponiveis`;
+          emptyState.hidden = true;
+          return;
+        }
+
+        if (visibleCount === 0) {
+          status.textContent = `Nenhum resultado para "${rawQuery}"`;
+          emptyState.hidden = false;
+          return;
+        }
+
+        status.textContent = `${formatCount(visibleCount)} para "${rawQuery}"`;
+        emptyState.hidden = true;
+      };
+
+      input.addEventListener("input", update);
+      clearButton.addEventListener("click", () => {
+        input.value = "";
+        input.focus();
+        update();
+      });
+
+      update();
+    });
+  })();
+</script>

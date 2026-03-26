@@ -41,26 +41,50 @@
 </section>
 
 <section class="posts-feed">
-    {{- if eq .Data.Singular "category" }}
-    {{- with site.Taxonomies.categories }}
-    <div class="posts-category-select">
-        <details class="posts-category-dropdown">
-            <summary>{{ $currentLabel }}</summary>
-            <div class="posts-category-options">
-                <a class="posts-category-option" href="{{ "posts/" | relURL }}">Todas as categorias</a>
-                {{- range $name, $_ := . }}
-                {{- $slug := $name | urlize -}}
-                <a class="posts-category-option{{ if eq $slug $currentTerm }} is-active{{ end }}" href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
-                {{- end }}
+    <div class="posts-feed__controls" data-posts-search-root>
+        <div class="posts-search">
+            <label class="posts-search__label" for="posts-search-input">Buscar posts</label>
+            <div class="posts-search__field">
+                <input
+                    id="posts-search-input"
+                    class="posts-search__input"
+                    type="search"
+                    placeholder="Buscar por titulo, resumo, tag ou categoria"
+                    autocomplete="off"
+                    data-posts-search-input>
+                <button class="posts-search__clear" type="button" hidden data-posts-search-clear>Limpar</button>
             </div>
-        </details>
+        </div>
+
+        {{- if eq .Data.Singular "category" }}
+        {{- with site.Taxonomies.categories }}
+        <div class="posts-category-select">
+            <details class="posts-category-dropdown">
+                <summary>{{ $currentLabel }}</summary>
+                <div class="posts-category-options">
+                    <a class="posts-category-option" href="{{ "posts/" | relURL }}">Todas as categorias</a>
+                    {{- range $name, $_ := . }}
+                    {{- $slug := $name | urlize -}}
+                    <a class="posts-category-option{{ if eq $slug $currentTerm }} is-active{{ end }}" href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
+                    {{- end }}
+                </div>
+            </details>
+        </div>
+        {{- end }}
+        {{- end }}
     </div>
-    {{- end }}
-    {{- end }}
+
+    <p class="posts-search__status" data-posts-search-status>{{ $count }} {{ if eq $count 1 }}post disponivel{{ else }}posts disponiveis{{ end }}</p>
 
     <div class="posts-grid">
         {{- range $pages }}
-        <article class="posts-card">
+        {{- $summary := .Summary | plainify -}}
+        {{- $tags := delimit (.Params.tags | default (slice)) " " -}}
+        {{- $categories := delimit (.Params.categories | default (slice)) " " -}}
+        <article
+            class="posts-card"
+            data-post-search-item
+            data-search="{{ printf "%s %s %s %s" .Title $summary $tags $categories }}">
             <a class="posts-card__link" href="{{ .RelPermalink }}">
                 {{- $cover := "" -}}
                 {{- with .Params.cover }}
@@ -96,6 +120,11 @@
             </a>
         </article>
         {{- end }}
+    </div>
+
+    <div class="posts-search-empty" hidden data-posts-search-empty>
+        <p class="posts-search-empty__title">Nenhum post encontrado.</p>
+        <p class="posts-search-empty__body">Tente buscar por outro termo, tag ou categoria.</p>
     </div>
 </section>
 
