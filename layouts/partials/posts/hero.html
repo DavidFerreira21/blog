@@ -1,0 +1,51 @@
+{{- $title := .title -}}
+{{- $kicker := .kicker -}}
+{{- $subtitle := .subtitle -}}
+{{- $summary := .summary -}}
+{{- $countPill := .countPill -}}
+{{- $updatedPill := .updatedPill -}}
+{{- $showCategoryTabs := .showCategoryTabs | default false -}}
+{{- $currentCategory := .currentCategory | default "" -}}
+{{- $allCategoriesLabel := .allCategoriesLabel | default "Todas" -}}
+{{- $allCategoriesHref := .allCategoriesHref | default "posts/" -}}
+{{- $taxonomyStyle := .taxonomyStyle | default false -}}
+
+<section class="posts-hero{{ if $taxonomyStyle }} posts-hero--taxonomy{{ end }}">
+    <div class="posts-hero__inner{{ if $taxonomyStyle }} posts-hero__inner--taxonomy{{ end }}">
+        <div class="posts-hero__copy">
+            {{- with $kicker }}
+            <p class="posts-hero__kicker">{{ . }}</p>
+            {{- end }}
+            <h1 class="posts-hero__title">{{ $title }}</h1>
+            {{- with $subtitle }}
+            <p class="posts-hero__subtitle">{{ . }}</p>
+            {{- end }}
+            {{- with $summary }}
+            <p class="posts-hero__summary">{{ . }}</p>
+            {{- end }}
+
+            {{- if or $countPill $updatedPill }}
+            <div class="posts-hero__meta">
+                {{- with $countPill }}
+                <span class="posts-hero__pill">{{ . }}</span>
+                {{- end }}
+                {{- with $updatedPill }}
+                <span class="posts-hero__pill">{{ . }}</span>
+                {{- end }}
+            </div>
+            {{- end }}
+
+            {{- if $showCategoryTabs }}
+            <nav class="posts-hero__category-tabs" aria-label="Categorias principais">
+                <a class="posts-hero__category-tab{{ if eq $currentCategory "" }} is-active{{ end }}" href="{{ $allCategoriesHref | relURL }}">{{ $allCategoriesLabel }}</a>
+                {{- with site.Taxonomies.categories }}
+                {{- range $name, $_ := . }}
+                {{- $slug := $name | urlize -}}
+                <a class="posts-hero__category-tab{{ if eq $slug $currentCategory }} is-active{{ end }}" href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
+                {{- end }}
+                {{- end }}
+            </nav>
+            {{- end }}
+        </div>
+    </div>
+</section>

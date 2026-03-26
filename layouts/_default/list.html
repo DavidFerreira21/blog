@@ -1,81 +1,20 @@
 {{ define "main" }}
 {{- $pages := .RegularPages.ByDate.Reverse -}}
-{{- $count := len $pages -}}
 
-<section class="posts-hero">
-    <div class="posts-hero__inner">
-        <div class="posts-hero__copy">
-            <p class="posts-hero__kicker">Seção</p>
-            <h1 class="posts-hero__title">{{ .Title }}</h1>
-            {{- with .Description }}
-            <p class="posts-hero__subtitle">{{ . }}</p>
-            {{- end }}
-        </div>
-    </div>
-</section>
+{{- partial "posts/hero.html" (dict
+    "title" .Title
+    "kicker" "Seção"
+    "subtitle" .Description
+) }}
 
-<section class="posts-feed">
-    <div class="posts-feed__controls" data-posts-search-root>
-        <div class="posts-search">
-            <label class="posts-search__label" for="posts-search-input">Buscar posts</label>
-            <div class="posts-search__field">
-                <input
-                    id="posts-search-input"
-                    class="posts-search__input"
-                    type="search"
-                    placeholder="Buscar por titulo, resumo, tag ou categoria"
-                    autocomplete="off"
-                    data-posts-search-input>
-                <button class="posts-search__clear" type="button" hidden data-posts-search-clear>Limpar</button>
-            </div>
-        </div>
-    </div>
-
-    <p class="posts-search__status" data-posts-search-status>{{ $count }} {{ if eq $count 1 }}post disponivel{{ else }}posts disponiveis{{ end }}</p>
-
-    <div class="posts-grid">
-        {{- range $pages }}
-        {{- $summary := .Summary | plainify -}}
-        {{- $tags := delimit (.Params.tags | default (slice)) " " -}}
-        {{- $categories := delimit (.Params.categories | default (slice)) " " -}}
-        <article
-            class="posts-card"
-            data-post-search-item
-            data-search="{{ printf "%s %s %s %s" .Title $summary $tags $categories }}">
-            <a class="posts-card__link" href="{{ .RelPermalink }}">
-                {{- $cover := "" -}}
-                {{- with .Params.cover }}
-                {{- $cover = .image | default "" -}}
-                {{- end -}}
-                {{- if not $cover }}
-                {{- with .Params.image }}
-                {{- $cover = . -}}
-                {{- end -}}
-                {{- end -}}
-                {{- if $cover }}
-                <div class="posts-card__media">
-                    <img src="{{ $cover | relURL }}" alt="{{ with .Params.cover }}{{ .alt | default $.Title }}{{ else }}{{ .Title }}{{ end }}" loading="lazy" decoding="async">
-                </div>
-                {{- end }}
-                <div class="posts-card__meta">
-                    <span class="posts-card__section">
-                        {{- with .CurrentSection }}{{ .Title }}{{- else }}{{ .Section | title }}{{- end }}
-                    </span>
-                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-                </div>
-                <h3 class="posts-card__title">{{ .Title }}</h3>
-                {{- with .Summary }}
-                <p class="posts-card__summary">{{ . | plainify | truncate 160 }}</p>
-                {{- end }}
-            </a>
-        </article>
-        {{- end }}
-    </div>
-
-    <div class="posts-search-empty" hidden data-posts-search-empty>
-        <p class="posts-search-empty__title">Nenhum post encontrado.</p>
-        <p class="posts-search-empty__body">Tente buscar por outro termo, tag ou categoria.</p>
-    </div>
-</section>
+{{- partial "posts/feed.html" (dict
+    "pages" $pages
+    "searchInputID" "section-search-input"
+    "searchLabel" "Buscar conteúdo"
+    "itemSingular" "item"
+    "itemPlural" "itens"
+    "emptyTitle" "Nenhum conteúdo encontrado."
+    "emptyBody" "Tente buscar por outro termo."
+) }}
 
 {{ end }}

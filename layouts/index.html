@@ -18,10 +18,10 @@
             {{- if or (and $home.primaryButtonLabel $home.primaryButtonUrl) (and $home.secondaryButtonLabel $home.secondaryButtonUrl) }}
             <div class="hero-actions">
                 {{- if and $home.primaryButtonLabel $home.primaryButtonUrl }}
-                <a class="hero-btn primary" href="{{ $home.primaryButtonUrl | relURL }}">{{ $home.primaryButtonLabel }}</a>
+                <a class="site-btn site-btn--primary" href="{{ $home.primaryButtonUrl | relURL }}">{{ $home.primaryButtonLabel }}</a>
                 {{- end }}
                 {{- if and $home.secondaryButtonLabel $home.secondaryButtonUrl }}
-                <a class="hero-btn ghost" href="{{ $home.secondaryButtonUrl | relURL }}">{{ $home.secondaryButtonLabel }}</a>
+                <a class="site-btn site-btn--ghost" href="{{ $home.secondaryButtonUrl | relURL }}">{{ $home.secondaryButtonLabel }}</a>
                 {{- end }}
             </div>
             {{- end }}
@@ -100,7 +100,7 @@
 
     {{- if and $home.feedButtonLabel $home.feedButtonUrl }}
     <div class="feed-footer">
-        <a class="hero-btn primary" href="{{ $home.feedButtonUrl | relURL }}">{{ $home.feedButtonLabel }}</a>
+        <a class="site-btn site-btn--primary" href="{{ $home.feedButtonUrl | relURL }}">{{ $home.feedButtonLabel }}</a>
     </div>
     {{- end }}
 </section>

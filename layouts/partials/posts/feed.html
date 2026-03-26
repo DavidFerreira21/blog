@@ -1,0 +1,66 @@
+{{- $pages := .pages | default (slice) -}}
+{{- $count := len $pages -}}
+{{- $showCategorySelect := .showCategorySelect | default false -}}
+{{- $currentCategory := .currentCategory | default "" -}}
+{{- $currentCategoryLabel := .currentCategoryLabel | default "Todas as categorias" -}}
+{{- $allCategoriesLabel := .allCategoriesLabel | default "Todas as categorias" -}}
+{{- $showTags := .showTags | default false -}}
+{{- $searchInputID := .searchInputID | default "posts-search-input" -}}
+{{- $searchLabel := .searchLabel | default "Buscar conteúdo" -}}
+{{- $searchPlaceholder := .searchPlaceholder | default "Buscar por título, resumo, tag ou categoria" -}}
+{{- $emptyTitle := .emptyTitle | default "Nenhum conteúdo encontrado." -}}
+{{- $emptyBody := .emptyBody | default "Tente buscar por outro termo, tag ou categoria." -}}
+{{- $itemSingular := .itemSingular | default "item" -}}
+{{- $itemPlural := .itemPlural | default "itens" -}}
+
+<section
+    class="posts-feed"
+    data-posts-search-section
+    {{ printf "data-posts-search-singular=%q" $itemSingular | safeHTMLAttr }}
+    {{ printf "data-posts-search-plural=%q" $itemPlural | safeHTMLAttr }}>
+    <div class="posts-feed__controls" data-posts-search-root>
+        <div class="posts-search">
+            <label class="posts-search__label" for="{{ $searchInputID }}">{{ $searchLabel }}</label>
+            <div class="posts-search__field">
+                <input
+                    id="{{ $searchInputID }}"
+                    class="posts-search__input"
+                    type="search"
+                    placeholder="{{ $searchPlaceholder }}"
+                    autocomplete="off"
+                    data-posts-search-input>
+                <button class="posts-search__clear" type="button" hidden data-posts-search-clear>Limpar</button>
+            </div>
+        </div>
+
+        {{- if $showCategorySelect }}
+        {{- with site.Taxonomies.categories }}
+        <div class="posts-category-select">
+            <details class="posts-category-dropdown">
+                <summary>{{ $currentCategoryLabel }}</summary>
+                <div class="posts-category-options">
+                    <a class="posts-category-option{{ if eq $currentCategory "" }} is-active{{ end }}" href="{{ "posts/" | relURL }}">{{ $allCategoriesLabel }}</a>
+                    {{- range $name, $_ := . }}
+                    {{- $slug := $name | urlize -}}
+                    <a class="posts-category-option{{ if eq $slug $currentCategory }} is-active{{ end }}" href="{{ printf "categories/%s/" $slug | relURL }}">{{ $name }}</a>
+                    {{- end }}
+                </div>
+            </details>
+        </div>
+        {{- end }}
+        {{- end }}
+    </div>
+
+    <p class="posts-search__status" data-posts-search-status>{{ $count }} {{ if eq $count 1 }}{{ $itemSingular }} disponível{{ else }}{{ $itemPlural }} disponíveis{{ end }}</p>
+
+    <div class="posts-grid">
+        {{- range $pages }}
+        {{- partial "posts/card.html" (dict "page" . "showTags" $showTags) }}
+        {{- end }}
+    </div>
+
+    <div class="posts-search-empty" hidden data-posts-search-empty>
+        <p class="posts-search-empty__title">{{ $emptyTitle }}</p>
+        <p class="posts-search-empty__body">{{ $emptyBody }}</p>
+    </div>
+</section>

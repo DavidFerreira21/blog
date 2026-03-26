@@ -1,0 +1,45 @@
+{{- $page := .page -}}
+{{- $showTags := .showTags | default false -}}
+{{- $summary := $page.Summary | plainify -}}
+{{- $tagList := $page.Params.tags | default (slice) -}}
+{{- $tags := delimit $tagList " " -}}
+{{- $categories := delimit ($page.Params.categories | default (slice)) " " -}}
+{{- $cover := "" -}}
+{{- with $page.Params.cover }}
+  {{- $cover = .image | default "" -}}
+{{- end -}}
+{{- if not $cover }}
+  {{- with $page.Params.image }}
+    {{- $cover = . -}}
+  {{- end -}}
+{{- end -}}
+
+<article
+    class="posts-card"
+    data-post-search-item
+    data-search="{{ printf "%s %s %s %s" $page.Title $summary $tags $categories }}">
+    <a class="posts-card__link" href="{{ $page.RelPermalink }}">
+        {{- if $cover }}
+        <div class="posts-card__media">
+            <img src="{{ $cover | relURL }}" alt="{{ with $page.Params.cover }}{{ .alt | default $page.Title }}{{ else }}{{ $page.Title }}{{ end }}" loading="lazy" decoding="async">
+        </div>
+        {{- end }}
+        <div class="posts-card__meta">
+            <span class="posts-card__section">
+                {{- with $page.CurrentSection }}{{ .Title }}{{- else }}{{ $page.Section | title }}{{- end }}
+            </span>
+            <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "02 Jan 2006" }}</time>
+        </div>
+        <h3 class="posts-card__title">{{ $page.Title }}</h3>
+        {{- with $page.Summary }}
+        <p class="posts-card__summary">{{ . | plainify | truncate 160 }}</p>
+        {{- end }}
+        {{- if and $showTags $tagList }}
+        <div class="posts-card__tags">
+            {{- range first 3 $tagList }}
+            <span class="tag">#{{ . }}</span>
+            {{- end }}
+        </div>
+        {{- end }}
+    </a>
+</article>

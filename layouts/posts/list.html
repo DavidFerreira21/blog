@@ -2,117 +2,34 @@
 {{- $pages := where site.RegularPages "Type" "posts" -}}
 {{- $pages = $pages.ByDate.Reverse -}}
 {{- $count := len $pages -}}
+{{- $latestUpdate := "-" -}}
+{{- if gt $count 0 -}}
+  {{- $latestUpdate = (index $pages 0).Date.Format "02 Jan 2006" -}}
+{{- end -}}
 
-<section class="posts-hero posts-hero--taxonomy">
-    <div class="posts-hero__inner posts-hero__inner--taxonomy">
-        <div class="posts-hero__copy">
-            <p class="posts-hero__kicker">Posts</p>
-            <h1 class="posts-hero__title">{{ .Title }}</h1>
-            {{- with .Params.description }}
-            <p class="posts-hero__subtitle">{{ . }}</p>
-            {{- end }}
-            <p class="posts-hero__summary">Biblioteca técnica com conteúdos de cloud, arquitetura e devops, organizada para consulta rápida.</p>
+{{- partial "posts/hero.html" (dict
+    "title" .Title
+    "kicker" "Posts"
+    "subtitle" .Params.description
+    "summary" "Biblioteca técnica com conteúdos de cloud, arquitetura e devops, organizada para consulta rápida."
+    "countPill" (printf "<strong>%d</strong> %s" $count (cond (eq $count 1) "post" "posts") | safeHTML)
+    "updatedPill" (printf "Atualizado %s" $latestUpdate)
+    "showCategoryTabs" true
+    "taxonomyStyle" true
+) }}
 
-            <div class="posts-hero__meta">
-                <span class="posts-hero__pill"><strong>{{ $count }}</strong> {{ if eq $count 1 }}post{{ else }}posts{{ end }}</span>
-                <span class="posts-hero__pill">Atualizado {{ with index $pages 0 }}{{ .Date.Format "02 Jan 2006" }}{{ else }}-{{ end }}</span>
-            </div>
-
-            <nav class="posts-hero__category-tabs" aria-label="Categorias principais">
-                <a class="posts-hero__category-tab is-active" href="{{ "posts/" | relURL }}">Todas</a>
-                {{- with site.Taxonomies.categories }}
-                {{- range $name, $_ := . }}
-                <a class="posts-hero__category-tab" href="{{ printf "categories/%s/" ($name | urlize) | relURL }}">{{ $name }}</a>
-                {{- end }}
-                {{- end }}
-            </nav>
-        </div>
-    </div>
-</section>
-
-<section class="posts-feed">
-    <div class="posts-feed__controls" data-posts-search-root>
-        <div class="posts-search">
-            <label class="posts-search__label" for="posts-search-input">Buscar posts</label>
-            <div class="posts-search__field">
-                <input
-                    id="posts-search-input"
-                    class="posts-search__input"
-                    type="search"
-                    placeholder="Buscar por titulo, resumo, tag ou categoria"
-                    autocomplete="off"
-                    data-posts-search-input>
-                <button class="posts-search__clear" type="button" hidden data-posts-search-clear>Limpar</button>
-            </div>
-        </div>
-
-        {{- with site.Taxonomies.categories }}
-        <div class="posts-category-select">
-            <details class="posts-category-dropdown">
-                <summary>Todas as categorias</summary>
-                <div class="posts-category-options">
-                    <a class="posts-category-option is-active" href="{{ "posts/" | relURL }}">Todas as categorias</a>
-                    {{- range $name, $_ := . }}
-                    <a class="posts-category-option" href="{{ printf "categories/%s/" ($name | urlize) | relURL }}">{{ $name }}</a>
-                    {{- end }}
-                </div>
-            </details>
-        </div>
-        {{- end }}
-    </div>
-
-    <p class="posts-search__status" data-posts-search-status>{{ $count }} {{ if eq $count 1 }}post disponivel{{ else }}posts disponiveis{{ end }}</p>
-
-    <div class="posts-grid">
-        {{- range $pages }}
-        {{- $summary := .Summary | plainify -}}
-        {{- $tags := delimit (.Params.tags | default (slice)) " " -}}
-        {{- $categories := delimit (.Params.categories | default (slice)) " " -}}
-        <article
-            class="posts-card"
-            data-post-search-item
-            data-search="{{ printf "%s %s %s %s" .Title $summary $tags $categories }}">
-            <a class="posts-card__link" href="{{ .RelPermalink }}">
-                {{- $cover := "" -}}
-                {{- with .Params.cover }}
-                {{- $cover = .image | default "" -}}
-                {{- end -}}
-                {{- if not $cover }}
-                {{- with .Params.image }}
-                {{- $cover = . -}}
-                {{- end -}}
-                {{- end -}}
-                {{- if $cover }}
-                <div class="posts-card__media">
-                    <img src="{{ $cover | relURL }}" alt="{{ with .Params.cover }}{{ .alt | default $.Title }}{{ else }}{{ .Title }}{{ end }}" loading="lazy" decoding="async">
-                </div>
-                {{- end }}
-                <div class="posts-card__meta">
-                    <span class="posts-card__section">
-                        {{- with .CurrentSection }}{{ .Title }}{{- else }}{{ .Section | title }}{{- end }}
-                    </span>
-                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-                </div>
-                <h3 class="posts-card__title">{{ .Title }}</h3>
-                {{- with .Summary }}
-                <p class="posts-card__summary">{{ . | plainify | truncate 160 }}</p>
-                {{- end }}
-                {{- with .Params.tags }}
-                <div class="posts-card__tags">
-                    {{- range first 3 . }}
-                    <span class="tag">#{{ . }}</span>
-                    {{- end }}
-                </div>
-                {{- end }}
-            </a>
-        </article>
-        {{- end }}
-    </div>
-
-    <div class="posts-search-empty" hidden data-posts-search-empty>
-        <p class="posts-search-empty__title">Nenhum post encontrado.</p>
-        <p class="posts-search-empty__body">Tente buscar por outro termo, tag ou categoria.</p>
-    </div>
-</section>
+{{- partial "posts/feed.html" (dict
+    "pages" $pages
+    "showCategorySelect" true
+    "currentCategoryLabel" "Todas as categorias"
+    "allCategoriesLabel" "Todas as categorias"
+    "showTags" true
+    "searchInputID" "posts-search-input"
+    "searchLabel" "Buscar posts"
+    "itemSingular" "post"
+    "itemPlural" "posts"
+    "emptyTitle" "Nenhum post encontrado."
+    "emptyBody" "Tente buscar por outro termo, tag ou categoria."
+) }}
 
 {{ end }}
