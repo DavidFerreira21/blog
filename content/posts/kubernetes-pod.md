@@ -1,9 +1,13 @@
 ---
 title: "Série k8s: Pods — o básico do Kubernetes"
+slug: "kubernetes-pod"
+aliases:
+  - "/posts/k8s-pod/"
 date: 2026-01-29T11:00:00-03:00
 description: "Entenda o que é um Pod no Kubernetes, como criar, inspecionar e aplicar boas práticas com exemplos práticos."
-tags: ["k8s", "kubernetes", "pods", "fundamentos", "containers"]
-categories: ["k8s", "cloud"]
+summary: "Entenda o que é um Pod no Kubernetes, como criar, inspecionar e aplicar boas práticas com exemplos práticos."
+tags: ["kubernetes", "pod", "fundamentos", "containers"]
+categories: ["kubernetes", "cloud"]
 draft: false
 cover:
   image: "images/pod.png"
@@ -84,7 +88,7 @@ Para que os Pods rodem, cada nó precisa ter um **container runtime** instalado 
 
 ## Mão na massa
 
-Vamos para alguns comandos e exemplos práticos. Se você ainda não tem um cluster k8s local, utilize o nosso guia de instalação e configuração do Kind: [instalar Kind no WSL](/posts/install-kind/).
+Vamos para alguns comandos e exemplos práticos. Se você ainda não tem um cluster k8s local, utilize o nosso guia de instalação e configuração do Kind: [instalar Kind no WSL](/posts/kind-no-wsl-com-docker-desktop/).
 
 ## Consultar Pods
 

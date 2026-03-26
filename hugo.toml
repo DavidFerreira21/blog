@@ -44,46 +44,31 @@ languageCode = "pt-br"
     weight = 10
 
   [[menu.main]]
-    identifier = "categories/arquitetura"
-    name = "Arquitetura"
-    url = "/categories/arquitetura/"
+    identifier = "categories/kubernetes"
+    name = "Kubernetes"
+    url = "/categories/kubernetes/"
     weight = 20
+
+  [[menu.main]]
+    identifier = "categories/terraform"
+    name = "Terraform"
+    url = "/categories/terraform/"
+    weight = 30
 
   [[menu.main]]
     identifier = "categories/cloud"
     name = "Cloud"
     url = "/categories/cloud/"
-    weight = 30
+    weight = 40
 
   [[menu.main]]
     identifier = "categories/devops"
     name = "DevOps"
     url = "/categories/devops/"
-    weight = 40
+    weight = 50
 
   [[menu.main]]
     identifier = "sobre"
     name = "Sobre"
     url = "/sobre/"
-    weight = 50
-
-  # Arquitetura/DevOps removidos do menu por enquanto
-
-
-[params.profileMode]
-  enabled = true
-  title = "David Ferreira"
-  subtitle = "Cloud Architect • Platform Engineering"
-  imageUrl = "images/hero.png"
-  imageTitle = "Cloud & Platform Engineering"
-  imageWidth = 320  
-  imageHeight = 180
-
-
-  [[params.profileMode.buttons]]
-    name = "Labs"
-    url = "/labs/"
-
-  [[params.profileMode.buttons]]
-    name = "Arquitetura"
-    url = "/categories/k8s/"
+    weight = 60

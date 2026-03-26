@@ -1,9 +1,13 @@
 ---
 title: "O que realmente precisa existir em um módulo Terraform corporativo"
+slug: "terraform-modulos-corporativos"
+aliases:
+  - "/posts/terraform-modules/"
 date: 2026-03-12T10:30:00-03:00
 description: "O que diferencia um modulo Terraform generico de um modulo corporativo e quais decisoes devem ficar encapsuladas para garantir padronizacao, seguranca e governanca."
-tags: ["terraform", "iac", "aws", "modulos", "governanca", "seguranca", "platform-engineering", "vpc", "rds", "ec2", "opa"]
-categories: ["terraform", "devops", "nuvem", "governanca"]
+summary: "O que diferencia um modulo Terraform generico de um modulo corporativo e quais decisoes devem ficar encapsuladas para garantir padronizacao, seguranca e governanca."
+tags: ["terraform", "iac", "aws", "modulos", "governanca", "seguranca", "engenharia-de-plataforma", "vpc", "rds", "ec2", "opa"]
+categories: ["terraform", "governanca", "cloud"]
 draft: false
 cover:
   image: "images/terraform-module.png"

@@ -1,9 +1,13 @@
 ---
 title: "Série k8s: Deployments — como versionar e escalar aplicações"
+slug: "kubernetes-deployment"
+aliases:
+  - "/posts/deployment/"
 date: 2026-01-29T13:00:00-03:00
 description: "Entenda o que é um Deployment no Kubernetes, como funciona rollout/rollback e as principais estratégias de atualização."
-tags: ["k8s", "kubernetes", "deployments", "rollout", "fundamentos"]
-categories: ["k8s", "cloud"]
+summary: "Entenda o que é um Deployment no Kubernetes, como funciona rollout/rollback e as principais estratégias de atualização."
+tags: ["kubernetes", "deployment", "rollout", "fundamentos"]
+categories: ["kubernetes", "cloud"]
 draft: false
 cover:
   image: "images/deployment.png"

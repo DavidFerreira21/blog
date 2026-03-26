@@ -10,10 +10,14 @@
 {{- $categoryBlurb := "Conteúdos técnicos organizados por categoria para facilitar estudo e consulta rápida." -}}
 {{- if eq $currentTerm "cloud" -}}
 {{- $categoryBlurb = "Arquitetura, governança, automação e operação em ambientes cloud com foco prático em AWS." -}}
-{{- else if eq $currentTerm "k8s" -}}
+{{- else if eq $currentTerm "kubernetes" -}}
 {{- $categoryBlurb = "Série de conteúdos sobre Kubernetes: fundamentos, operação e boas práticas para produção." -}}
 {{- else if eq $currentTerm "devops" -}}
 {{- $categoryBlurb = "Práticas DevOps para acelerar entrega com confiabilidade: CI/CD, automação e troubleshooting." -}}
+{{- else if eq $currentTerm "terraform" -}}
+{{- $categoryBlurb = "Conteúdos sobre Terraform com foco em módulos, ambientes, governança e operação de infraestrutura como código." -}}
+{{- else if eq $currentTerm "governanca" -}}
+{{- $categoryBlurb = "Conteúdos sobre governança cloud, padronização, segurança e decisões estruturais para escalar infraestrutura." -}}
 {{- end -}}
 
 {{- partial "posts/hero.html" (dict

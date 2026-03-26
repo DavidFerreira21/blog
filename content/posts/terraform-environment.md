@@ -1,9 +1,13 @@
 ---
 title: "Terraform multi-environment: decisões que evitam que sua infraestrutura vire caos"
+slug: "terraform-multi-environment"
+aliases:
+  - "/posts/terraform-environment/"
 date: 2026-03-11T10:30:00-03:00
 description: "As decisões essenciais para estruturar ambientes Terraform com consistência, governança, rastreabilidade e controle de drift."
-tags: ["terraform", "iac", "devops", "aws", "governanca", "modulos", "pipeline", "multiambiente", "engenharia-de-plataforma"]
-categories: ["terraform", "devops", "nuvem", "governanca"]
+summary: "As decisões essenciais para estruturar ambientes Terraform com consistência, governança, rastreabilidade e controle de drift."
+tags: ["terraform", "iac", "aws", "governanca", "modulos", "pipeline", "multiambiente", "engenharia-de-plataforma"]
+categories: ["terraform", "governanca", "cloud"]
 draft: false
 cover:
   image: "images/terraform-mult.png"

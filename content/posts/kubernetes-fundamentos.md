@@ -1,9 +1,13 @@
 ---
 title: "Série k8s: Fundamentos de Kubernetes"
+slug: "kubernetes-fundamentos"
+aliases:
+  - "/posts/ks8-fundamentos/"
 date: 2026-01-29T09:00:00-03:00
 description: "Início da série de Kubernetes: conceitos base, runtimes, componentes e visão geral da arquitetura."
-tags: ["k8s", "kubernetes", "fundamentos", "containers", "cloud"]
-categories: ["k8s", "cloud"]
+summary: "Início da série de Kubernetes: conceitos base, runtimes, componentes e visão geral da arquitetura."
+tags: ["kubernetes", "fundamentos", "containers", "cloud"]
+categories: ["kubernetes", "cloud"]
 draft: false
 cover:
   image: "images/k8s-fundamentos.png"
