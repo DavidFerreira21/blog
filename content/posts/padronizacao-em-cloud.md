@@ -1,9 +1,14 @@
 ---
 title: "Padronização em Cloud: o que acontece quando ela não existe"
+slug: "padronizacao-em-cloud"
+aliases:
+  - "/posts/padronizacao-na-cloud/"
+  - "/posts/padronização-na-cloud/"
 date: 2026-01-28
 description: "Sem padronização, ambientes cloud rapidamente se tornam complexos e difíceis de operar. Veja como automação, IaC e governança ajudam a escalar infraestrutura com segurança."
 tags: ["cloud", "governanca", "padronizacao", "automacao", "finops", "iac"]
-categories: ["cloud", "governance","Arquitetura"]
+summary: "Sem padronização, ambientes cloud rapidamente se tornam complexos e difíceis de operar. Veja como automação, IaC e governança ajudam a escalar infraestrutura com segurança."
+categories: ["cloud", "governanca"]
 draft: false
 cover:
   image: "images/padronizacao.png"

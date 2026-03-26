@@ -1,8 +1,13 @@
 ---
 title: "Guia rápido: Kind no WSL com Docker Desktop"
+slug: "kind-no-wsl-com-docker-desktop"
+aliases:
+  - "/posts/install-kind/"
 date: 2026-01-29
-tags: ["k8s", "kubernetes", "kind", "wsl2", "docker-desktop", "windows"]
-categories: ["k8s", "devops"]
+description: "Passo a passo para instalar e configurar um cluster Kind no WSL com Docker Desktop para estudos e laboratórios."
+summary: "Passo a passo para instalar e configurar um cluster Kind no WSL com Docker Desktop para estudos e laboratórios."
+tags: ["kubernetes", "kind", "wsl2", "docker-desktop", "windows"]
+categories: ["kubernetes", "devops"]
 draft: false
 cover:
   image: "images/kind-wsl-cover.png"

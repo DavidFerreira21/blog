@@ -1,9 +1,14 @@
 ---
 title: "Série k8s: ReplicaSet, DaemonSet e StatefulSet — quando usar cada um"
+slug: "kubernetes-replicaset-daemonset-statefulset"
+aliases:
+  - "/posts/replicaset-daemonset-statefulset/"
+  - "/posts/replicaSet-daemonSet-statefulSet/"
 date: 2026-01-29T14:30:00-03:00
 description: "Entenda as diferenças entre ReplicaSet, DaemonSet e StatefulSet, com casos de uso e comandos práticos."
-tags: ["k8s", "kubernetes", "replicaset", "daemonset", "statefulset", "fundamentos"]
-categories: ["k8s", "cloud"]
+summary: "Entenda as diferenças entre ReplicaSet, DaemonSet e StatefulSet, com casos de uso e comandos práticos."
+tags: ["kubernetes", "replicaset", "daemonset", "statefulset", "fundamentos"]
+categories: ["kubernetes", "cloud"]
 draft: false
 cover:
   image: "images/workloads.png"

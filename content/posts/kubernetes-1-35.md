@@ -1,9 +1,13 @@
 ---
 title: "Kubernetes 1.35: principais mudanças e impactos"
+slug: "kubernetes-1-35"
+aliases:
+  - "/posts/k8s-1-35/"
 date: 2026-01-29T23:18:29-03:00
 description: "Resumo das mudanças mais relevantes do Kubernetes 1.35, com foco em deprecações e impactos operacionais."
-tags: ["k8s", "kubernetes", "release", "v1.35", "changelog"]
-categories: ["k8s", "cloud"]
+summary: "Resumo das mudanças mais relevantes do Kubernetes 1.35, com foco em deprecações e impactos operacionais."
+tags: ["kubernetes", "release", "v1-35", "changelog"]
+categories: ["kubernetes", "cloud"]
 draft: false
 cover:
   image: "images/k8s-1-35.png"

@@ -1,9 +1,13 @@
 ---
 title: "Série k8s: Probes — liveness, readiness e startup"
+slug: "kubernetes-probes"
+aliases:
+  - "/posts/probes/"
 date: 2026-01-29T15:30:00-03:00
 description: "Entenda quando usar liveness, readiness e startup probes, com exemplos YAML práticos."
-tags: ["k8s", "kubernetes", "probes", "observabilidade", "fundamentos"]
-categories: ["k8s", "cloud"]
+summary: "Entenda quando usar liveness, readiness e startup probes, com exemplos YAML práticos."
+tags: ["kubernetes", "probes", "observabilidade", "fundamentos"]
+categories: ["kubernetes", "cloud"]
 draft: false
 cover:
   image: "images/probes.png"

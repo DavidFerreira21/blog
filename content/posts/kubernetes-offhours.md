@@ -1,9 +1,14 @@
 ---
 title: "K8s OffHours: reduzindo custos em ambientes Kubernetes"
+slug: "kubernetes-offhours"
+aliases:
+  - "/posts/k8soffhours/"
+  - "/posts/k8sOffHours/"
 date: 2026-03-08T10:00:00-03:00
 description: "Como automatizar shutdown/startup de workloads fora do horário útil e reduzir custo real com autoscaling de nós."
-tags: ["k8s", "kubernetes", "finops", "automation", "cost-optimization", "devops"]
-categories: ["k8s", "devops", "cloud"]
+summary: "Como automatizar shutdown/startup de workloads fora do horário útil e reduzir custo real com autoscaling de nós."
+tags: ["kubernetes", "finops", "automacao", "otimizacao-de-custos", "devops"]
+categories: ["kubernetes", "devops", "cloud"]
 draft: false
 cover:
   image: "images/k8sOffHours.png"
