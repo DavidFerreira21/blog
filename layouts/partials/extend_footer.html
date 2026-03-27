@@ -34,3 +34,33 @@
 </div>
 
 {{- partial "posts/search_script.html" . }}
+
+{{- if .IsPage }}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  (function () {
+    const mermaidBlocks = document.querySelectorAll("pre > code.language-mermaid");
+    if (!mermaidBlocks.length || typeof mermaid === "undefined") return;
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "dark",
+      securityLevel: "loose",
+      flowchart: { useMaxWidth: true, htmlLabels: true }
+    });
+
+    mermaidBlocks.forEach((codeBlock, index) => {
+      const pre = codeBlock.parentElement;
+      if (!pre) return;
+
+      const container = document.createElement("div");
+      container.className = "mermaid";
+      container.id = "mermaid-diagram-" + index;
+      container.textContent = codeBlock.textContent.trim();
+      pre.replaceWith(container);
+    });
+
+    mermaid.run({ querySelector: ".mermaid" });
+  })();
+</script>
+{{- end }}

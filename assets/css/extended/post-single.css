@@ -141,8 +141,14 @@
 
 .post-single .post-tags li a {
   border-radius: 999px;
-  border-color: rgba(61, 214, 140, 0.28);
-  background: rgba(15, 157, 88, 0.12);
+  border-color: rgba(96, 145, 220, 0.34);
+  background: rgba(38, 88, 168, 0.18);
+  color: #d9e7ff;
+}
+
+.post-single .post-tags li a:hover {
+  border-color: rgba(121, 170, 245, 0.5);
+  background: rgba(49, 102, 190, 0.28);
 }
 
 .post-single .share-buttons {
@@ -163,9 +169,9 @@
   gap: 0.42rem;
   padding: 0.42rem 0.8rem;
   border-radius: 999px;
-  border: 1px solid rgba(61, 214, 140, 0.28);
-  background: rgba(15, 157, 88, 0.12);
-  color: #d3efe1;
+  border: 1px solid rgba(96, 145, 220, 0.34);
+  background: rgba(38, 88, 168, 0.18);
+  color: #d9e7ff;
   font-size: 0.82rem;
   line-height: 1;
 }
@@ -176,8 +182,8 @@
 }
 
 .post-single .share-buttons a:hover {
-  border-color: rgba(61, 214, 140, 0.42);
-  background: rgba(15, 157, 88, 0.2);
+  border-color: rgba(121, 170, 245, 0.5);
+  background: rgba(49, 102, 190, 0.28);
 }
 
 @media (max-width: 900px) {
