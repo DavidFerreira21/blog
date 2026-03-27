@@ -8,7 +8,7 @@ date: 2026-03-08T10:00:00-03:00
 description: "Como automatizar shutdown/startup de workloads fora do horário útil e reduzir custo real com autoscaling de nós."
 summary: "Como automatizar shutdown/startup de workloads fora do horário útil e reduzir custo real com autoscaling de nós."
 tags: ["kubernetes", "finops", "automacao", "otimizacao-de-custos", "devops"]
-categories: ["kubernetes", "devops", "cloud"]
+categories: ["kubernetes", "devops", "cloud", "projetos"]
 draft: false
 cover:
   image: "images/k8sOffHours.png"

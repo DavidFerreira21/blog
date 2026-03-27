@@ -50,9 +50,9 @@ languageCode = "pt-br"
     weight = 20
 
   [[menu.main]]
-    identifier = "categories/terraform"
-    name = "Terraform"
-    url = "/categories/terraform/"
+    identifier = "categories/projetos"
+    name = "Projetos"
+    url = "/categories/projetos/"
     weight = 30
 
   [[menu.main]]
