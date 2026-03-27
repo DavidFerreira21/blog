@@ -8,8 +8,8 @@ tags: ["aws", "organizations", "control-tower", "service-catalog", "step-functio
 categories: ["projetos", "cloud", "governanca"]
 draft: false
 cover:
-  image: "images/hero.png"
-  alt: "Ilustração sobre automação de criação de contas AWS por API"
+  image: "images/automation-accounts-api.jpg"
+  alt: "Arquitetura da AWS Account Automation API com API Gateway, Lambda, Step Functions, DynamoDB, Organizations e Control Tower"
 ---
 
 [Projeto no GitHub: DavidFerreira21/api-account-factory](https://github.com/DavidFerreira21/api-account-factory)

@@ -8,8 +8,8 @@ tags: ["azure", "finops", "automacao", "azure-functions", "table-storage", "reso
 categories: ["projetos", "cloud", "governanca"]
 draft: false
 cover:
-  image: "images/hero.png"
-  alt: "Ilustração sobre automação off-hours com governança no Azure"
+  image: "images/azure-schedule.png"
+  alt: "Arquitetura do Azure OffHours Scheduler com Azure Functions, Table Storage e governança de execução"
 ---
 
 [Projeto no GitHub: DavidFerreira21/azure-offhours-scheduler](https://github.com/DavidFerreira21/azure-offhours-scheduler)
