@@ -533,3 +533,28 @@ html[data-theme="dark"] .card-media {
  .home-hero { padding-block: 2.8rem; }
 }
 @media (max-width: 480px) { .home-topics__links { grid-template-columns: 1fr; } .home-featured__media { aspect-ratio: 16/9; } }
+
+
+/* Full-bleed sections: PaperMod constrains main to a centered max-width.
+   Keep colored bands viewport-wide and content capped at 1120px. */
+.home-featured,
+.home-topics {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
+}
+.home-featured__inner,
+.home-topics__inner {
+  width: 100%;
+  min-width: 0;
+}
+.home-featured__intro,
+.home-featured__media,
+.home-topics__inner > * {
+  min-width: 0;
+}
+.home-featured__media img { display: block; }
+@media (max-width: 800px) {
+  .home-featured,
+  .home-topics { padding-inline: max(var(--gap), 20px); }
+}
