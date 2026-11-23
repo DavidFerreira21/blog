@@ -558,3 +558,62 @@ html[data-theme="dark"] .card-media {
   .home-featured,
   .home-topics { padding-inline: max(var(--gap), 20px); }
 }
+
+
+/*
+ * Home visual refinement: continuous editorial canvas, soft section
+ * boundaries and contrast concentrated in cards and calls to action.
+ */
+.home-hero {
+  background:
+    radial-gradient(ellipse 58% 85% at 86% 18%, rgba(48, 91, 162, 0.13), transparent 70%),
+    linear-gradient(180deg, #0c1422 0%, #0d1624 100%);
+}
+.home-featured {
+  background:
+    radial-gradient(ellipse 50% 85% at 85% 48%, rgba(43, 95, 172, 0.095), transparent 74%),
+    linear-gradient(180deg, #0d1624, #0d1726);
+  border-top: 1px solid rgba(161, 185, 219, 0.07);
+  padding-block: clamp(3.2rem, 5vw, 5rem);
+}
+.home-topics {
+  background: linear-gradient(180deg, #0d1726 0%, #0e1929 100%);
+  border-top: 1px solid rgba(161, 185, 219, 0.055);
+  padding-block: clamp(2.4rem, 3.5vw, 3.7rem);
+}
+.home-feed {
+  background:
+    radial-gradient(ellipse 60% 25% at 12% 0%, rgba(56, 92, 149, 0.065), transparent 85%),
+    linear-gradient(180deg, #0e1929, #0c1421);
+  border-top: 1px solid rgba(161, 185, 219, 0.075);
+  padding-top: clamp(2.7rem, 4.5vw, 4.5rem);
+}
+.home-featured__inner { gap: clamp(2rem, 4vw, 4.5rem); }
+.home-featured__intro h2 {
+  max-width: 18ch;
+  line-height: 1.13;
+  font-weight: 700;
+}
+.home-featured__intro > p:not(.feed-kicker) { max-width: 49ch; }
+.home-featured__media {
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .23);
+  border-color: rgba(132, 178, 241, .23);
+  background: #0e1c33;
+}
+.home-topics__links a {
+  background: rgba(171, 197, 241, 0.035);
+  border-color: rgba(161, 185, 219, .17);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+.home-topics__links a:hover, .home-topics__links a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(127, 176, 255, .1);
+  border-color: rgba(145, 187, 248, .5);
+}
+.home-topics__links a span { color: #8ebaff; }
+.home-feed .feed-header { margin-bottom: 1.7rem; }
+@media (max-width: 800px) {
+  .home-featured { padding-block: 2.7rem; }
+  .home-topics { padding-block: 2.5rem; }
+  .home-featured__intro h2 { max-width: 100%; }
+}
