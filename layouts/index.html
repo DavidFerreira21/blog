@@ -1,107 +1,94 @@
 {{ define "main" }}
 {{- $home := site.Params.home | default dict -}}
-{{- $banner := $home.banner | default "images/hero.png" -}}
-{{- $pages := where site.RegularPages "Type" "in" (slice "posts") -}}
+{{- $pages := where site.RegularPages "Type" "posts" -}}
 {{- $pages = $pages.ByDate.Reverse -}}
+{{- $featured := site.GetPage "posts/kubernetes-visual-guide" -}}
 
 <section class="home-hero">
-    <div class="hero-inner">
-        <div class="hero-copy">
-            {{- with $home.kicker }}
-            <p class="hero-kicker"><span></span>{{ . }}</p>
-            {{- end }}
-            <h1 class="hero-title">{{ $home.title | default site.Title }}</h1>
-            {{- with $home.subtitle }}
-            <p class="hero-subtitle">{{ . }}</p>
-            {{- end }}
-
-            {{- if or (and $home.primaryButtonLabel $home.primaryButtonUrl) (and $home.secondaryButtonLabel $home.secondaryButtonUrl) }}
-            <div class="hero-actions">
-                {{- if and $home.primaryButtonLabel $home.primaryButtonUrl }}
-                <a class="site-btn site-btn--primary" href="{{ $home.primaryButtonUrl | relURL }}">{{ $home.primaryButtonLabel }}</a>
-                {{- end }}
-                {{- if and $home.secondaryButtonLabel $home.secondaryButtonUrl }}
-                <a class="site-btn site-btn--ghost" href="{{ $home.secondaryButtonUrl | relURL }}">{{ $home.secondaryButtonLabel }}</a>
-                {{- end }}
-            </div>
-            {{- end }}
-            <p class="hero-note">Artigos objetivos sobre cloud, arquitetura e platform engineering, com foco em prática e operação real.</p>
-        </div>
-
-        <div class="hero-media">
-            <div class="hero-media__frame">
-                <img src="{{ $banner | absURL }}" alt="{{ $home.title | default site.Title }}">
-            </div>
-        </div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-kicker"><span></span> CLOUD • PLATFORM ENGINEERING • OPEN SOURCE</p>
+      <h1 class="hero-title">Arquitetura, automação e <em>aprendizado na prática.</em></h1>
+      <p class="hero-subtitle">Compartilho estudos, experiências e projetos sobre Cloud, Kubernetes e engenharia de plataformas — do conceito à implementação.</p>
+      <div class="hero-actions">
+        <a class="site-btn site-btn--primary" href="{{ "posts/" | relURL }}">Explorar artigos</a>
+        <a class="site-btn site-btn--ghost" href="{{ "categories/projetos/" | relURL }}">Conhecer projetos</a>
+      </div>
+      <p class="hero-note">Por David Ferreira · Cloud Architect e Platform Engineering.</p>
     </div>
+    <div class="hero-media">
+      <div class="hero-media__frame">
+        <img src="{{ ($home.banner | default "images/hero.png") | relURL }}" alt="Ilustração de arquitetura e tecnologia">
+      </div>
+    </div>
+  </div>
+</section>
+
+{{- with $featured }}
+<section class="home-featured" aria-labelledby="featured-title">
+  <div class="home-featured__inner">
+    <div class="home-featured__intro">
+      <p class="feed-kicker">Projeto em destaque</p>
+      <h2 id="featured-title">Aprender Kubernetes, enxergando o que acontece.</h2>
+      <p>Uma trilha open source com 49 aulas, infográficos e desafios práticos para ir além do YAML e entender o comportamento real do cluster.</p>
+      <div class="home-featured__actions">
+        <a class="site-btn site-btn--primary" href="{{ .RelPermalink }}">Conhecer o guia</a>
+        <a class="site-btn site-btn--ghost" href="https://github.com/DavidFerreira21/kubernetes-visual-guide" rel="noopener noreferrer" target="_blank">Ver no GitHub ↗</a>
+      </div>
+    </div>
+    <a class="home-featured__media" href="{{ .RelPermalink }}" aria-label="Ler sobre o Kubernetes Visual Guide">
+      {{- with .Params.cover.image }}<img src="{{ . | relURL }}" alt="Diagrama visual Kubernetes" loading="lazy">{{- end }}
+      <span class="home-featured__media-label">Kubernetes Visual Guide</span>
+    </a>
+  </div>
+</section>
+{{- end }}
+
+<section class="home-topics" aria-labelledby="home-topics-title">
+  <div class="home-topics__inner">
+    <div>
+      <p class="feed-kicker">Navegue por interesse</p>
+      <h2 id="home-topics-title">Encontre o que quer aprender</h2>
+    </div>
+    <nav class="home-topics__links" aria-label="Assuntos do blog">
+      <a href="{{ "categories/kubernetes/" | relURL }}">Kubernetes <span aria-hidden="true">↗</span></a>
+      <a href="{{ "categories/cloud/" | relURL }}">Cloud <span aria-hidden="true">↗</span></a>
+      <a href="{{ "categories/terraform/" | relURL }}">Terraform <span aria-hidden="true">↗</span></a>
+      <a href="{{ "categories/projetos/" | relURL }}">Projetos <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
 </section>
 
 <section class="home-feed">
-    <div class="feed-header">
-        <div>
-            <p class="feed-kicker">{{ $home.feedKicker | default "Novidades" }}</p>
-            <h2 class="feed-title">{{ $home.feedTitle | default "Últimos artigos e labs" }}</h2>
-        </div>
+  <div class="feed-header">
+    <div>
+      <p class="feed-kicker">{{ $home.feedKicker | default "Novidades" }}</p>
+      <h2 class="feed-title">{{ $home.feedTitle | default "Últimos artigos" }}</h2>
+      <p class="feed-intro">Novos estudos, experiências e projetos — organizados para você continuar explorando.</p>
     </div>
+    <a class="home-feed__all" href="{{ "posts/" | relURL }}">Todos os artigos <span aria-hidden="true">→</span></a>
+  </div>
 
-    {{- with site.Taxonomies.categories }}
-    <div class="category-select">
-        <details class="category-dropdown">
-            <summary>Todas as categorias</summary>
-            <div class="category-options">
-                <a class="category-option" href="{{ "posts/" | relURL }}">Todas as categorias</a>
-                {{- range $name, $_ := . }}
-                <a class="category-option" href="{{ printf "categories/%s/" ($name | urlize) | relURL }}">{{ $name }}</a>
-                {{- end }}
-            </div>
-        </details>
-    </div>
-    {{- end }}
-
-    <div class="feed-grid">
-        {{- range first 6 $pages }}
-        <article class="home-card has-media">
-            <a class="card-link" href="{{ .RelPermalink }}">
-                {{- $cover := "" -}}
-                {{- with .Params.cover }}
-                {{- $cover = .image | default "" -}}
-                {{- end -}}
-                {{- if not $cover }}
-                {{- with .Params.image }}
-                {{- $cover = . -}}
-                {{- end -}}
-                {{- end -}}
-                {{- if $cover }}
-                <div class="card-media">
-                    <img src="{{ $cover | relURL }}" alt="{{ with .Params.cover }}{{ .alt | default $.Title }}{{ else }}{{ .Title }}{{ end }}" loading="lazy" decoding="async">
-                </div>
-                {{- end }}
-                <div class="card-meta">
-                    <span class="card-section">
-                        {{- with .CurrentSection }}{{ .Title }}{{- else }}{{ .Section | title }}{{- end }}
-                    </span>
-                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-                </div>
-                <h3 class="card-title">{{ .Title }}</h3>
-                {{- with .Summary }}
-                <p class="card-summary">{{ . | plainify | truncate 160 }}</p>
-                {{- end }}
-                {{- with .Params.tags }}
-                <div class="card-tags">
-                    {{- range first 3 . }}
-                    <span class="tag">#{{ . }}</span>
-                    {{- end }}
-                </div>
-                {{- end }}
-            </a>
-        </article>
+  <div class="feed-grid">
+    {{- range first 6 $pages }}
+    <article class="home-card has-media">
+      <a class="card-link" href="{{ .RelPermalink }}">
+        {{- $cover := "" -}}
+        {{- with .Params.cover }}{{ $cover = .image | default "" }}{{- end -}}
+        {{- if not $cover }}{{ with .Params.image }}{{ $cover = . }}{{ end }}{{ end -}}
+        {{- if $cover }}
+        <div class="card-media"><img src="{{ $cover | relURL }}" alt="{{ .Title }}" loading="lazy" decoding="async"></div>
         {{- end }}
-    </div>
-
-    {{- if and $home.feedButtonLabel $home.feedButtonUrl }}
-    <div class="feed-footer">
-        <a class="site-btn site-btn--primary" href="{{ $home.feedButtonUrl | relURL }}">{{ $home.feedButtonLabel }}</a>
-    </div>
+        <div class="card-meta">
+          <span class="card-section">{{ with .Params.categories }}{{ index . 0 | upper }}{{ else }}ARTIGO{{ end }}</span>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+        </div>
+        <h3 class="card-title">{{ .Title }}</h3>
+        {{- with .Summary }}<p class="card-summary">{{ . | plainify | truncate 150 }}</p>{{- end }}
+        <div class="home-card__read">Ler artigo <span aria-hidden="true">→</span></div>
+      </a>
+    </article>
     {{- end }}
+  </div>
 </section>
 {{ end }}

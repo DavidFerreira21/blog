@@ -150,3 +150,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Replace inactive newsletter signup with working destinations. */
+.custom-footer__actions { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: flex-end; }
+.custom-footer__actions a { white-space: nowrap; }
+.custom-footer__actions .site-btn--ghost { color: #dbe9fb; border-color: rgba(148,163,184,.3); }
+@media(max-width:860px) { .custom-footer__actions { justify-content: flex-start; } }
