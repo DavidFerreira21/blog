@@ -238,41 +238,38 @@
 @media (max-width: 720px) { .article-toc ol { columns: 1; } .related-posts__grid { grid-template-columns: 1fr; } }
 
 
-/* Article cover: editorial-sized presentation rather than a full-height banner.
-   Keep the entire infographic visible; never crop information with cover. */
+/* Article cover: natural image aspect ratio, no padded billboard or letterboxing. */
 .post-single .entry-cover {
-  width: min(960px, calc(100vw - (var(--gap) * 2)));
-  max-width: min(960px, calc(100vw - (var(--gap) * 2)));
-  height: clamp(240px, 29vw, 390px);
-  margin: 1.1rem auto 1.75rem;
-  padding: clamp(.65rem, 1.4vw, 1rem);
-  box-sizing: border-box;
+  width: min(780px, calc(100vw - (var(--gap) * 2)));
+  max-width: min(780px, calc(100vw - (var(--gap) * 2)));
+  height: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+  margin: 1rem auto 1.4rem;
+  padding: 0;
+  display: block;
   overflow: hidden;
-  border-radius: 20px;
-  border: 1px solid rgba(141, 170, 207, .18);
-  background: linear-gradient(180deg, #0e1a2b, #10203a);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, .18);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: none;
+  background: transparent;
 }
 .post-single .entry-cover img {
   display: block;
   width: 100%;
-  height: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center;
-  border-radius: 10px;
+  height: auto;
+  max-height: none;
+  object-fit: initial;
+  border-radius: 14px;
 }
 @media (max-width: 720px) {
   .post-single .entry-cover {
     width: min(100%, calc(100vw - (var(--gap) * 2)));
     max-width: min(100%, calc(100vw - (var(--gap) * 2)));
-    height: clamp(180px, 50vw, 260px);
-    margin: .85rem auto 1.3rem;
-    padding: .55rem;
-    border-radius: 16px;
+    height: auto;
+    margin: .8rem auto 1.2rem;
+    padding: 0;
+    border-radius: 10px;
   }
-  .post-single .entry-cover img { border-radius: 9px; }
+  .post-single .entry-cover img { border-radius: 10px; }
 }

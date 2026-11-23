@@ -65,7 +65,9 @@
         var li = document.createElement('li');
         var a = document.createElement('a');
         a.href = '#' + h.id;
-        a.textContent = h.textContent;
+        var headingCopy = h.cloneNode(true);
+        headingCopy.querySelectorAll('a.anchor, .anchor').forEach(function (node) { node.remove(); });
+        a.textContent = headingCopy.textContent.trim();
         li.appendChild(a); list.appendChild(li);
       });
       toc.appendChild(list);
