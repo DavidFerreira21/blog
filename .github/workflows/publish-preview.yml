@@ -1,0 +1,41 @@
+name: Publish isolated design preview
+
+on:
+  push:
+    branches:
+      - design/preview-editorial-v2
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-preview-deployment
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout preview branch and theme
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Install Hugo Extended
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.146.0'
+          extended: true
+      - name: Build isolated /preview/ website
+        run: hugo --minify --baseURL https://davidferreira.blog/preview/
+      - name: Deploy only the preview folder (keep published root)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public
+          destination_dir: preview
+          keep_files: true
+          force_orphan: false
+          commit_message: "preview: update isolated redesign"

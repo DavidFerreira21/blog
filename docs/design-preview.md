@@ -1,23 +1,22 @@
-# Prévia do redesign — sem alterar o site publicado
+# Prévia pública do redesign
 
-As modificações ficam isoladas na branch `design/preview-editorial-v2`. **Nenhuma alteração em `main` ou `gh-pages` é necessária para revisar a interface.**
+A versão visual da branch `design/preview-editorial-v2` é publicada **somente em `/preview/`**, no mesmo GitHub Pages do blog, sem configurar DNS:
 
-## Abrir versão navegável pelo navegador
+**[https://davidferreira.blog/preview/](https://davidferreira.blog/preview/)**
 
-1. Na PR do redesign, acesse **Code → Codespaces → Create codespace on this branch**. Você também pode entrar em [github.com/codespaces](https://github.com/codespaces) e escolher este repositório e branch.
-2. O ambiente usa `.devcontainer/devcontainer.json`, instala Hugo Extended 0.146.0 e baixa o submódulo PaperMod.
-3. Ao iniciar, o Hugo Server expõe a porta **1313**. Abra a aba **Ports** do Codespaces e clique no endereço HTTPS da porta 1313; se o servidor não estiver ativo, execute no terminal: `hugo server --bind 0.0.0.0 --port 1313 --baseURL /`.
-4. Navegue pela home, listagem de posts, artigos e página Sobre. Edite os arquivos da branch e o Hugo atualizará a visualização. A URL da porta pode ser privada e exige sessão GitHub.
+A home e os artigos existentes em `https://davidferreira.blog/` não são substituídos pelo processo de prévia.
 
-**Alternativa local:** `git checkout design/preview-editorial-v2 && git submodule update --init --recursive && hugo server -D`, abrir `http://localhost:1313/`.
+## Como funciona
 
-## Verificações antes de publicar
+- Um workflow GitHub Actions da própria branch executa `hugo --minify --baseURL https://davidferreira.blog/preview/`.
+- O deploy usa `destination_dir: preview` e `keep_files: true` na branch `gh-pages`, preservando os arquivos da raiz publicada.
+- A prévia é **pública**. Não insira segredos, dados privados ou rascunhos confidenciais nesta branch.
+- O deploy normal da `main` atual usa `force_orphan: true`, então **uma futura publicação da `main` poderá apagar a pasta `/preview/`**. Para restaurá-la, basta atualizar a branch de preview e o workflow republicará somente essa pasta. A prévia não é permanente.
+- Para publicar o redesign definitivamente, é necessário aprovar e mesclar a PR. **Não faça merge apenas para testar a prévia.**
+- Se a URL ainda não carregar, confira o workflow **Publish isolated design preview** em Actions e o GitHub Pages; aguarde o Pages concluir a implantação.
 
-- Desktop e celular: layout, cards, menu, categorias e navegação.
-- Texto: largura, índice automático, bloco de código horizontal, leitura e imagens.
-- Acessibilidade: contraste, foco de teclado, links que funcionam e alt de imagens.
-- Rodapé: GitHub e LinkedIn reais; não há mais formulário sem integração.
-- Performance: imagens grandes precisam de otimização; nenhum asset original foi removido.
-- `hugo --minify` deve concluir com sucesso.
+## Revisão
 
-A PR não deve ser mesclada até a aprovação visual. O deploy de produção continua exclusivo de pushes na `main`.
+Navegue a home, /preview/posts/, categorias, artigos e página Sobre em desktop e celular. Os links internos devem permanecer dentro de `/preview/`. Links externos para GitHub/LinkedIn abrem seus destinos reais.
+
+A alternativa Codespaces continua disponível, mas não é necessária para navegar nesta prévia.
