@@ -6,7 +6,7 @@ description: "Como minhas anotações de Kubernetes evoluíram para um guia open
 summary: "De anotações espalhadas a uma trilha visual e prática de Kubernetes: conheça a proposta do Kubernetes Visual Guide e como começar."
 tags: ["kubernetes", "kind", "gitops", "cloud-native", "open-source", "aprendizado"]
 categories: ["kubernetes", "projetos"]
-draft: true
+draft: false
 cover:
   image: "images/k8s-arch.png"
   alt: "Diagrama de arquitetura do Kubernetes com componentes do cluster"
