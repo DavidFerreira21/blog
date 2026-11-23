@@ -1,0 +1,38 @@
+name: Preview build (no deploy)
+
+on:
+  pull_request:
+    paths:
+      - 'layouts/**'
+      - 'assets/**'
+      - 'content/**'
+      - 'static/**'
+      - 'hugo.toml'
+      - '.devcontainer/**'
+      - '.github/workflows/preview-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with PaperMod submodule
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Install Hugo Extended
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.146.0'
+          extended: true
+      - name: Build preview (without publication)
+        run: hugo --minify
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-preview
+          path: public/
+          retention-days: 7

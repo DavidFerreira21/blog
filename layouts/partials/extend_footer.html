@@ -1,66 +1,113 @@
-{{- /* Custom footer content */ -}}
+{{- /* Project CTA: no unconfigured newsletter form. */ -}}
 <div class="custom-footer">
-    <div class="custom-footer__inner">
-        <div class="custom-footer__cta">
-            <p class="custom-footer__title">Quer receber atualizações?</p>
-            <p class="custom-footer__subtitle">Inscreva-se para não perder novos posts sobre cloud, arquitetura e devops.</p>
-        </div>
-        <form class="custom-footer__subscribe" action="#" method="post">
-            <label for="subscribe-email">Newsletter</label>
-            <div class="custom-footer__subscribe-row">
-                <input id="subscribe-email" name="email" type="email" placeholder="Seu melhor e-mail" required>
-                <button type="submit">Assinar</button>
-            </div>
-        </form>
+  <div class="custom-footer__inner">
+    <div class="custom-footer__cta">
+      <p class="custom-footer__title">Continue acompanhando os projetos</p>
+      <p class="custom-footer__subtitle">Artigos, experimentos e projetos open source sobre Cloud, Kubernetes e Platform Engineering.</p>
     </div>
-    <div class="custom-footer__divider"></div>
-    <div class="custom-footer__bottom">
-        <div class="custom-footer__brand">
-            <span class="custom-footer__name">{{ site.Title }}</span>
-            <span class="custom-footer__theme">Cloud • Platform Engineering • DevOps</span>
-        </div>
-        <div class="custom-footer__links">
-            <a class="custom-footer__link" href="{{ "sobre/" | relURL }}">Sobre mim</a>
-            <a class="custom-footer__link" href="https://www.linkedin.com/in/davidferreirams/" rel="noopener" target="_blank">
-                <span class="custom-footer__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" role="img" aria-label="LinkedIn">
-                        <path d="M20.45 20.45H17V14.86c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.68H9.56V9h3.32v1.56h.05c.46-.88 1.58-1.8 3.26-1.8 3.49 0 4.13 2.3 4.13 5.29v6.4ZM5.34 7.43a1.94 1.94 0 1 1 0-3.88 1.94 1.94 0 0 1 0 3.88ZM6.95 20.45H3.72V9H6.95v11.45Z" />
-                    </svg>
-                </span>
-                LinkedIn
-            </a>
-        </div>
+    <div class="custom-footer__actions">
+      <a class="site-btn site-btn--primary" href="https://github.com/DavidFerreira21" target="_blank" rel="noopener noreferrer">Projetos no GitHub ↗</a>
+      <a class="site-btn site-btn--ghost" href="https://www.linkedin.com/in/davidferreirams/" target="_blank" rel="noopener noreferrer">Acompanhar no LinkedIn ↗</a>
     </div>
+  </div>
+  <div class="custom-footer__divider"></div>
+  <div class="custom-footer__bottom">
+    <div class="custom-footer__brand">
+      <span class="custom-footer__name">{{ site.Title }}</span>
+      <span class="custom-footer__theme">Cloud • Platform Engineering • DevOps</span>
+    </div>
+    <div class="custom-footer__links">
+      <a class="custom-footer__link" href="{{ "sobre/" | relURL }}">Sobre mim</a>
+      <a class="custom-footer__link" href="{{ "posts/" | relURL }}">Artigos</a>
+    </div>
+  </div>
 </div>
 
 {{- partial "posts/search_script.html" . }}
 
+{{- if and .IsPage (eq .Section "posts") }}
+{{- $related := (site.RegularPages.Related . | first 3) -}}
+{{- with $related }}
+<template id="related-posts-template">
+  <section class="related-posts" aria-label="Continue lendo">
+    <p class="feed-kicker">Continue explorando</p>
+    <h2>Você também pode gostar</h2>
+    <div class="related-posts__grid">
+    {{ range . }}
+      <a href="{{ .RelPermalink }}" class="related-posts__item">
+        <span class="related-posts__label">{{ with .Params.categories }}{{ index . 0 }}{{ else }}Artigo{{ end }}</span>
+        <strong>{{ .Title }}</strong>
+        <span class="related-posts__read">Ler artigo →</span>
+      </a>
+    {{ end }}
+    </div>
+  </section>
+</template>
+{{- end }}
+{{- end }}
+
 {{- if .IsPage }}
+<script>
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var content = document.querySelector('.post-single .post-content');
+    if (!content) return;
+    var headings = Array.from(content.querySelectorAll('h2[id], h3[id]'));
+    if (headings.length >= 3) {
+      var toc = document.createElement('nav');
+      toc.className = 'article-toc';
+      toc.setAttribute('aria-label', 'Nesta página');
+      var title = document.createElement('strong');
+      title.textContent = 'Neste artigo';
+      toc.appendChild(title);
+      var list = document.createElement('ol');
+      headings.filter(function (h) { return h.tagName === 'H2'; }).forEach(function (h) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        var headingCopy = h.cloneNode(true);
+        headingCopy.querySelectorAll('a.anchor, .anchor').forEach(function (node) { node.remove(); });
+        a.textContent = headingCopy.textContent.trim();
+        li.appendChild(a); list.appendChild(li);
+      });
+      toc.appendChild(list);
+      content.parentNode.insertBefore(toc, content);
+    }
+    var related = document.querySelector('#related-posts-template');
+    var target = document.querySelector('.post-single .post-footer') || content;
+    if (related && target) target.insertAdjacentElement('afterend', related.content.firstElementChild.cloneNode(true));
+    var progress = document.createElement('div');
+    progress.className = 'article-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(progress);
+    var update = function () {
+      var rect = content.getBoundingClientRect();
+      var total = Math.max(1, content.offsetHeight - window.innerHeight * 0.4);
+      var seen = -rect.top;
+      progress.style.transform = 'scaleX(' + Math.max(0, Math.min(1, seen / total)) + ')';
+    };
+    window.addEventListener('scroll', update, {passive: true});
+    window.addEventListener('resize', update);
+    update();
+  });
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
-  (function () {
-    const mermaidBlocks = document.querySelectorAll("pre > code.language-mermaid");
-    if (!mermaidBlocks.length || typeof mermaid === "undefined") return;
-
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: "dark",
-      securityLevel: "loose",
-      flowchart: { useMaxWidth: true, htmlLabels: true }
-    });
-
-    mermaidBlocks.forEach((codeBlock, index) => {
-      const pre = codeBlock.parentElement;
-      if (!pre) return;
-
-      const container = document.createElement("div");
-      container.className = "mermaid";
-      container.id = "mermaid-diagram-" + index;
-      container.textContent = codeBlock.textContent.trim();
-      pre.replaceWith(container);
-    });
-
-    mermaid.run({ querySelector: ".mermaid" });
-  })();
+(function () {
+  const blocks = document.querySelectorAll("pre > code.language-mermaid");
+  if (!blocks.length || typeof mermaid === "undefined") return;
+  mermaid.initialize({ startOnLoad: false, theme: "dark", securityLevel: "strict", flowchart: { useMaxWidth: true, htmlLabels: false } });
+  blocks.forEach((block, index) => {
+    const pre = block.parentElement;
+    if (!pre) return;
+    const node = document.createElement("div");
+    node.className = "mermaid";
+    node.id = "mermaid-diagram-" + index;
+    node.textContent = block.textContent.trim();
+    pre.replaceWith(node);
+  });
+  mermaid.run({ querySelector: ".mermaid" });
+})();
 </script>
 {{- end }}
