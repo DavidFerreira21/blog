@@ -15,5 +15,5 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postStartCommand": "hugo server --bind 0.0.0.0 --port 1313 --baseURL / --disableFastRender"
+  "postStartCommand": "nohup hugo server --bind 0.0.0.0 --port 1313 --appendPort=false --baseURL / --disableFastRender > /tmp/hugo-preview.log 2>&1 &"
 }
